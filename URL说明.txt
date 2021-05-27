@@ -1,0 +1,21 @@
+登录：http://localhost:8080/login?name=123&password=123  返回true:成功 false:失败
+
+注册：http://localhost:8080/register?name=123456&password=ccc  返回true:成功 false:失败
+     http://localhost:8080/register/checkname?name=1234  检查重名  返回true:用户名被占用 false:用户名可用
+
+报告单查询：
+    http://localhost:8080/do/report/getreports?usr=008&role=doctor  usr为用户名，role为doctor或patient
+    返回List<Report>
+    例如：
+    [{"id":"0002","usr":"123","doctor":"008","department":"undefined","disease":"heart disease","disease_descr":"heavy","rep_time":null,"reg_state":true},{"id":"0003","usr":"122","doctor":"008","department":"undefined","disease":"heart disease","disease_descr":"heavy","rep_time":null,"reg_state":true},{"id":"0004","usr":"123","doctor":"008","department":"undefined","disease":"heart disease","disease_descr":"heavy","rep_time":null,"reg_state":true}]
+
+添加报告单：
+POST一个User/Doctor Requestbody
+
+病历查询：
+    http://localhost:8080/do/history/gethistory?name=123   name为用户名
+    返回List<History>
+
+个人信息：
+患者：http://localhost:8080/do/getinfo/usr?name=123
+医生：http://localhost:8080/do/getinfo/doctor?id=008
