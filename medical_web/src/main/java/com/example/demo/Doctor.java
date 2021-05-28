@@ -16,11 +16,12 @@ public class Doctor {
 	private String email;
 	private String tel;
 	private String vx;
+	private Time registerTime;
 	
 	public Doctor(String id,String name,String title,String department,String hospital,
 	String medicine,String introduction,String project,String registerID,
 	Integer registerSum, Integer score,String evaluate,String email,
-    String tel,String vx) {
+    String tel,String vx, Time registerTime) {
 		this.id=id;
 		this.name=name;
 		this.title=title;
@@ -36,6 +37,7 @@ public class Doctor {
 		this.tel=tel;
 		this.vx=vx;
 		this.email=email;
+		this.registerTime=registerTime;
 	}
 	
 	public String getId() {
@@ -98,5 +100,7 @@ public class Doctor {
 		return department;
 	}
 	
-	
+	public Time getRegisterTime() { 
+		return registerTime; 
+	}
 }
