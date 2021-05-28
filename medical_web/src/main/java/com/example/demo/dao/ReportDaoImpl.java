@@ -20,7 +20,7 @@ import com.example.demo.JdbcUtils;
 public class ReportDaoImpl implements ReportDao {
 	
     public boolean addReport(Report report) {
-    	 	String sql = "insert into report values ('"+report.getId()+"','"+report.getUsr()+"','"+report.getDoctor()+"','"+report.getDoctor_name()+"','"+report.getDepartment()+"','"+report.getDisease()+"','"+report.getDisease_descr()+"','"+report.getRep_time()+"',"+report.getReg_state()+")";
+    	 	String sql = "insert into report(usr_id,usr_name,doctor_id,doctor_name,department,disease,disease_descr,rep_time,reg_state) values ('"+report.getUser_id()+"','"+report.getUsr_name()+"','"+report.getDoctor_id()+"','"+report.getDoctor_name()+"','"+report.getDepartment()+"','"+report.getDisease()+"','"+report.getDisease_descr()+"','"+report.getRep_time()+"',"+report.getReg_state()+")";
 	    	try{
 	            Connection conn = JdbcUtils.getConnection();
 	            Statement stm = conn.createStatement();        
@@ -60,9 +60,10 @@ public class ReportDaoImpl implements ReportDao {
          
             while(rs.next()){
             	Report re=new Report(
-            			rs.getString("id"),
-            			rs.getString("usr"),
-            			rs.getString("doctor"),
+            			rs.getInt("id"),
+            			rs.getString("usr_id"),
+            			rs.getString("usr_name"),
+            			rs.getString("doctor_id"),
             			rs.getString("doctor_name"),
             			rs.getString("department"),
             			rs.getString("disease"),
@@ -97,9 +98,10 @@ public class ReportDaoImpl implements ReportDao {
          
             while(rs.next()){
             	Report re=new Report(
-            			rs.getString("id"),
-            			rs.getString("usr"),
-            			rs.getString("doctor"),
+            			rs.getInt("id"),
+            			rs.getString("usr_id"),
+            			rs.getString("usr_name"),
+            			rs.getString("doctor_id"),
             			rs.getString("doctor_name"),
             			rs.getString("department"),
             			rs.getString("disease"),

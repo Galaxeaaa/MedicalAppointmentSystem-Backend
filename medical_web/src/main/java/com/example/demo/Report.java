@@ -4,9 +4,10 @@ import java.sql.Time;
 import java.sql.Timestamp;
 
 public class Report {
-	private String id;
-	private String usr;
-	private String doctor;
+	private int id;
+	private String usr_id;
+	private String usr_name;
+	private String doctor_id;
 	private String doctor_name;
 	private String department;
 	private String disease;
@@ -14,11 +15,12 @@ public class Report {
 	private Timestamp rep_time;
 	private Boolean reg_state;
 	
-	public Report(String id,String usr,String doctor, String doctor_name,String department,String disease, String disease_descr,Timestamp rep_time,Boolean reg_state) {
+	public Report(Integer id,String usr_id,String usr_name,String doctor_id,String doctor_name,String department,String disease, String disease_descr,Timestamp rep_time,Boolean reg_state) {
 		this.id=id;
-		this.usr=usr;
+		this.usr_id=usr_id;
+		this.usr_name=usr_name;
 		this.department=department;
-		this.doctor=doctor;
+		this.doctor_id=doctor_id;
 		this.doctor_name=doctor_name;
 		this.disease=disease;
 		this.disease_descr=disease_descr;
@@ -27,16 +29,16 @@ public class Report {
 		
 	}
 	
-	public String getId() {
-		return this.id;
+	public String getUser_id() {
+		return this.usr_id;
 	}
 	
-	public String getUsr() {
-		return this.usr;
+	public String getUsr_name() {
+		return this.usr_name;
 	}
 	
-	public String getDoctor() {
-		return this.doctor;
+	public String getDoctor_id() {
+		return this.doctor_id;
 	}
 	
 	public String getDoctor_name() {

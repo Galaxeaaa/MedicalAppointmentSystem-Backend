@@ -15,10 +15,10 @@ public class InfoController {
     private InfoServiceImpl infoService;
 
     @RequestMapping(value = "/usr", method = RequestMethod.GET)
-    public List<User> getInfo(@RequestParam(value = "name", required = true) String name) {
+    public List<User> getInfo(@RequestParam(value = "id", required = true) String id) {
         System.out.println("患者个人信息");
         
-       return infoService.getInfo(name); 
+       return infoService.getInfo(id); 
     }
     
     @RequestMapping(value = "/doctor", method = RequestMethod.GET)

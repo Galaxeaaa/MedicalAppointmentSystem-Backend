@@ -8,8 +8,8 @@ import org.apache.ibatis.annotations.Select;
 import com.example.demo.*;
 
 public interface InfoDao {
-	 @Select("select id,name,medicalHist,graph from usr where name=#{name}")
-	    List<User> getInfo(@Param("name") String name);
+	 @Select("select id,name,graph,birth_date,gender,tel,address from usr where id=#{id}")
+	    List<User> getInfo(@Param("id") String id);
 	   
 	 @Select("select * from doctor where id=#{id}")
 	    List<Doctor> getInfo_doctor(@Param("id") String id);

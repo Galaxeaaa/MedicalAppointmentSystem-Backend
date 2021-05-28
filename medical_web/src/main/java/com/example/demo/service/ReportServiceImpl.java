@@ -26,11 +26,11 @@ public class ReportServiceImpl implements ReportService {
 		  
 		  String sql;
 		  if(role.equals("doctor")) {
-	    		sql = "select * from report where doctor='"+usr+"'";
+	    		sql = "select * from report where doctor_id='"+usr+"'";
 	    		return reportDao.getReports_doctor(usr,role,sql);
 	    	}
 	    	else {
-	    		sql = "select * from report where usr='"+usr+"'";
+	    		sql = "select * from report where usr_id='"+usr+"'";
 	    		return reportDao.getReports(usr,role,sql);
 	    	}
 		

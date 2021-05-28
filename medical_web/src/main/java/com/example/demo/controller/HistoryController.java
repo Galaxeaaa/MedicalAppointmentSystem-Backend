@@ -14,9 +14,14 @@ public class HistoryController {
     @Autowired
     private HistoryServiceImpl historyService;
 
+    @RequestMapping(value = "/addhistory", method = RequestMethod.POST)
+    public boolean addHistory(@RequestBody History history) {
+        System.out.println("新增病历");
+        return historyService.addHistory(history);
+    }
 
     @RequestMapping(value = "/gethistory", method = RequestMethod.GET)
-    public List<History> getReports(@RequestParam(value = "name", required = true) String name) {
+    public List<History> getReports(@RequestParam(value = "id", required = true) String name) {
         System.out.println("查询病历");
         return historyService.getHistory(name);
       

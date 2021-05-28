@@ -19,8 +19,8 @@ import com.example.demo.*;
 public class LoginDaoImpl implements LoginDao {
 	
 	
-	 public Boolean Login(@Param("name") String name, @Param("password") String password) {
-		 String sql = "select name,password from usr where name='"+name+"' and password='"+password+"'";
+	 public Boolean Login(@Param("id") String name, @Param("password") String password) {
+		 String sql = "select id,password from usr where id='"+name+"' and password='"+password+"'";
 		 boolean res=false;
 	    	try{
 	            Connection conn = JdbcUtils.getConnection();

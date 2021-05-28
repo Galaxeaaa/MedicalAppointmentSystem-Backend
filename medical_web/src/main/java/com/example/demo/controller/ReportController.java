@@ -15,7 +15,7 @@ public class ReportController {
     private ReportServiceImpl reportService;
 
     @RequestMapping(value = "/addreport", method = RequestMethod.POST)
-    public boolean addUser(@RequestBody Report report) {
+    public boolean addReport(@RequestBody Report report) {
         System.out.println("新增报告单");
         return reportService.addReport(report);
     }

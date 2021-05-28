@@ -20,4 +20,8 @@ public class HistoryServiceImpl implements HistoryService {
 		  
 		  
 	  }
+	  
+	  public boolean addHistory(History  report) {
+		  return historyDao.addHistory(report);
+	  }
 }

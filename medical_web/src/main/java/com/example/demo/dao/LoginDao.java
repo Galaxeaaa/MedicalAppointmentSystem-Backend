@@ -9,8 +9,8 @@ import org.apache.ibatis.annotations.Select;
 import com.example.demo.*;
 
 public interface LoginDao {
-	 @Select("select name,password from usr where name=#{name} and password=#{password}")
-	 Boolean Login(@Param("name") String name, @Param("password") String password);
+	 @Select("select id,password from usr where id=#{id} and password=#{password}")
+	 Boolean Login(@Param("id") String name, @Param("password") String password);
 	 
 	 /* @Select("select * from usr where name=#{name} and password=#{password}")
 	 Boolean Login_doctor(@Param("name") String name, @Param("password") String password);
@@ -22,7 +22,7 @@ public interface LoginDao {
 	 /* @Insert("insert into usr(id,name,password)  values (#{id},#{name),#{password}")
 	 Boolean Register_doctor(@Param("id") String id,@Param("name") String name, @Param("password") String password);
 	 */
-	 @Select("select name from usr where name=#{name}")
+	 @Select("select name from usr_id where name=#{name}")
 	 Boolean Check_name(@Param("name") String name);
 	 
 	 /*@Select("select * from usr where name=#{name}")

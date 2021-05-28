@@ -1,6 +1,7 @@
 package com.example.demo.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,21 +21,25 @@ import com.example.demo.JdbcUtils;
 public class InfoDaoImpl implements InfoDao {
 
     @Override
-    public List<User> getInfo(@Param("name") String name){
-    	String sql = "select id,name,medicalHist,graph from usr where name='"+name+"'";
+    public List<User> getInfo(@Param("id") String id){
+    	String sql = "select id,name,graph,birth_date,gender,tel,address from usr where id='"+id+"'";
     		
     	try{
             Connection conn = JdbcUtils.getConnection();
             Statement stm = conn.createStatement();        
             ResultSet rs = stm.executeQuery(sql);
             List<User> reports=new ArrayList<User>();
-         
+
             while(rs.next()){
             	User re=new User(
             			rs.getString("id"),
             			rs.getString("name"),
-            			rs.getString("medicalHist"),
-            			rs.getString("graph")			
+            			rs.getString("graph"),
+            			rs.getTimestamp("birth_date"),
+            			rs.getString("gender"),
+            			rs.getString("tel"),
+            			rs.getString("address")
+            			
             			);
             	reports.add(re);
             }

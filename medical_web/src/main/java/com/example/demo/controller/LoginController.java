@@ -19,7 +19,7 @@ public class LoginController {
     private LoginServiceImpl loginService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public boolean Login(@RequestParam(value = "name", required = true) String name,@RequestParam(value = "password", required = true) String password, Map<String,Object> map,HttpServletRequest request) {
+    public boolean Login(@RequestParam(value = "id", required = true) String name,@RequestParam(value = "password", required = true) String password, Map<String,Object> map,HttpServletRequest request) {
         System.out.println("登录");
         
         boolean res=loginService.Login(name,password);

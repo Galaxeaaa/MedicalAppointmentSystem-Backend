@@ -4,8 +4,8 @@ package com.example.demo;
 import java.sql.Time;
 
 public class History {
-	private String medicalHist;
-	private String name;
+	private int medicalHist;
+	private String id;
 	private String case_name;
 	private String advice;
 	private String doctor;
@@ -13,9 +13,9 @@ public class History {
 	private String op_record;
 	private String nur_record;
 	
-	public History(String medicalHist,String name,String case_name, String advice, String doctor,String check_state, String op_record, String nur_record) {
-		this.medicalHist=medicalHist;
-		this.name=name;
+	public History(Integer medical,String name,String case_name, String advice, String doctor,String check_state, String op_record, String nur_record) {
+		this.medicalHist=medical;
+		this.id=name;
 		this.case_name=case_name;
 		this.advice=advice;
 		this.doctor=doctor;
@@ -25,12 +25,8 @@ public class History {
 		
 	}
 	
-	public String getMedicalHist() {
-		return this.medicalHist;
-	}
-	
-	public String getName() {
-		return this.name;
+	public String getId() {
+		return this.id;
 	}
 	
 	public String getCase_name() {

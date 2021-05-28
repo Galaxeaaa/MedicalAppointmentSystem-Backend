@@ -19,9 +19,23 @@ import com.example.demo.JdbcUtils;
 @Mapper
 public class HistoryDaoImpl implements HistoryDao {
 	
-    public void addHistory(Report report) {
-		
-		
+    public boolean addHistory(History report) {
+		String sql="insert into usr_history(id,case_name,advice,doctor,check_state,op_record,nur_record) values ('"+report.getId()+"','"+report.getCase_name()+"','"+report.getAdvice()+"','"+report.getDoctor()+"','"+report.getCheck_state()+"','"+report.getOp_record()+"','"+report.getNur_record()+"')";
+		try{
+            Connection conn = JdbcUtils.getConnection();
+            Statement stm = conn.createStatement();        
+            ResultSet rs = stm.executeQuery(sql);
+          
+            rs.close();
+            stm.close();
+            conn.close();
+            
+            return true;
+        }catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+            return false;
+        }
 	}
 
     
@@ -36,7 +50,7 @@ public class HistoryDaoImpl implements HistoryDao {
      */
     @Override
     public List<History> getHistory(@Param("name") String name){
-    	String sql = "select * from user_history where name='"+name+"'";
+    	String sql = "select * from user_history where id='"+name+"'";
     		
     	try{
             Connection conn = JdbcUtils.getConnection();
@@ -46,8 +60,8 @@ public class HistoryDaoImpl implements HistoryDao {
          
             while(rs.next()){
             	History re=new History(
-            			rs.getString("medicalHist"),
-            			rs.getString("name"),
+            			rs.getInt("medicalHist"),
+            			rs.getString("id"),
             			rs.getString("case_name"),
             			rs.getString("advice"),
             			rs.getString("doctor"),

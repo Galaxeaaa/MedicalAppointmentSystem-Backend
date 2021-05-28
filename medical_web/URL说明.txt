@@ -11,12 +11,11 @@
 
 添加报告单：
 POST一个User/Doctor Requestbody
-/do/report/addreport
 
 病历查询：
-    http://localhost:8080/do/history/gethistory?name=123   name为用户名
+    http://localhost:8080/do/history/gethistory?id=123   name为用户名
     返回List<History>
 
 个人信息：
-患者：http://localhost:8080/do/getinfo/usr?name=123
+患者：http://localhost:8080/do/getinfo/usr?id=123
 医生：http://localhost:8080/do/getinfo/doctor?id=008
