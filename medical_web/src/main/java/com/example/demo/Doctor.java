@@ -1,4 +1,5 @@
 package com.example.demo;
+import java.sql.Time;
 
 public class Doctor {
 	private String id;
