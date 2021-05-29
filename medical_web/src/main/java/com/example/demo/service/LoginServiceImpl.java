@@ -14,10 +14,10 @@ public class LoginServiceImpl implements LoginService {
 	 private LoginDao loginDao;
 	
 	
-	  public boolean Login(String name,String pwd) {
+	  public boolean Login_usr(String name,String pwd) {
 		 // String sql = "select name,password from usr where name='"+name+"' and password='"+pwd+"'";
 		 // System.out.println(sql);
-		  Boolean res= loginDao.Login(name,pwd);
+		  Boolean res= loginDao.Login_usr(name,pwd);
 
 		  if(res==null)
 			  return false;
@@ -25,6 +25,17 @@ public class LoginServiceImpl implements LoginService {
 			  return true;
 		  
 	  }
+	public boolean Login_doc(String name,String pwd) {
+		// String sql = "select name,password from usr where name='"+name+"' and password='"+pwd+"'";
+		// System.out.println(sql);
+		Boolean res= loginDao.Login_doc(name,pwd);
+
+		if(res==null)
+			return false;
+		else
+			return true;
+
+	}
 public boolean Register(String name,String pwd) {
 		  
 		  return loginDao.Register(name,pwd);

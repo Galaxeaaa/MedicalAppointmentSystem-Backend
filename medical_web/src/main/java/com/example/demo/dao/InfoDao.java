@@ -16,6 +16,9 @@ public interface InfoDao {
 	    List<Doctor> getInfo_doctor(@Param("id") String id);
 	 
 	 @Update("update usr set name=#{name},graph=#{graph},birth_date=#{birth_date},gender=#{gender},tel=#{tel},address=#{address} where id=#{id}")
-	 boolean addInfo(String id,String name,String graph,String birth_date,String gender,String tel,String address);
+	 boolean addInfo_usr(String id,String name,String graph,String birth_date,String gender,String tel,String address);
+
+	@Update("update doctor set name=#{name},graph=#{graph},birth_date=#{birth_date},gender=#{gender},tel=#{tel},address=#{address} where id=#{id}")
+	boolean addInfo_doc(String id,String name,String graph,String birth_date,String gender,String tel,String address);
 	   
 }

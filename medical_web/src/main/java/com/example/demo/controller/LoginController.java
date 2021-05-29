@@ -18,11 +18,11 @@ public class LoginController {
     @Autowired
     private LoginServiceImpl loginService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public boolean Login(@RequestParam(value = "id", required = true) String name,@RequestParam(value = "password", required = true) String password, Map<String,Object> map,HttpServletRequest request) {
-        System.out.println("登录");
+    @RequestMapping(value = "/login_usr", method = RequestMethod.GET)
+    public boolean Login_usr(@RequestParam(value = "id", required = true) String name,@RequestParam(value = "password", required = true) String password, Map<String,Object> map,HttpServletRequest request) {
+        System.out.println("usr登录");
         
-        boolean res=loginService.Login(name,password);
+        boolean res=loginService.Login_usr(name,password);
         if(res==true) {
         	request.getSession().setAttribute("uname",name);
         	map.put("uname",name);
@@ -34,6 +34,24 @@ public class LoginController {
         	map.put("msg", "用户名或密码错误");
         	return false;
         }      
+    }
+
+    @RequestMapping(value = "/login_doc", method = RequestMethod.GET)
+    public boolean Login_doc(@RequestParam(value = "id", required = true) String name,@RequestParam(value = "password", required = true) String password, Map<String,Object> map,HttpServletRequest request) {
+        System.out.println("doc登录");
+
+        boolean res=loginService.Login_doc(name,password);
+        if(res==true) {
+            request.getSession().setAttribute("uname",name);
+            map.put("uname",name);
+
+            return true;
+        }
+        else {
+            request.getSession().invalidate();
+            map.put("msg", "用户名或密码错误");
+            return false;
+        }
     }
     
     @RequestMapping(value = "/register", method = RequestMethod.GET)

@@ -19,7 +19,7 @@ import com.example.demo.*;
 @Mapper
 public class InfoDaoImpl implements InfoDao {
 	@Override
-	public boolean addInfo(String id,String name,String graph,String birth_date,String gender,String tel,String address) {
+	public boolean addInfo_usr(String id,String name,String graph,String birth_date,String gender,String tel,String address) {
     	//id是指用户id
 		String sql="update usr set name='"+name+"',birth_date='"+birth_date+"',graph='"+graph+"',gender='"+gender+"',tel='"+tel+"',address='"+address+"' where id='"+id+"'";
 		try{
@@ -38,6 +38,26 @@ public class InfoDaoImpl implements InfoDao {
             return false;
         }
 	}
+
+    public boolean addInfo_doc(String id,String name,String graph,String birth_date,String gender,String tel,String address) {
+        //id是指用户id
+        String sql="update doctor set name='"+name+"',birth_date='"+birth_date+"',graph='"+graph+"',gender='"+gender+"',tel='"+tel+"',address='"+address+"' where id='"+id+"'";
+        try{
+            Connection conn = JdbcUtils.getConnection();
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            rs.close();
+            stm.close();
+            conn.close();
+
+            return true;
+        }catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+            return false;
+        }
+    }
 
     
 

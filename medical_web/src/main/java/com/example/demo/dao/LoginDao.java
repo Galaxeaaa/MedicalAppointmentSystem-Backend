@@ -10,7 +10,10 @@ import com.example.demo.*;
 
 public interface LoginDao {
 	 @Select("select id,password from usr where id=#{id} and password=#{password}")
-	 Boolean Login(@Param("id") String name, @Param("password") String password);
+	 Boolean Login_usr(@Param("id") String name, @Param("password") String password);
+
+	@Select("select id,password from doctor where id=#{id} and password=#{password}")
+	Boolean Login_doc(@Param("id") String name, @Param("password") String password);
 	 
 	 /* @Select("select * from usr where name=#{name} and password=#{password}")
 	 Boolean Login_doctor(@Param("name") String name, @Param("password") String password);

@@ -19,7 +19,7 @@ import com.example.demo.*;
 public class LoginDaoImpl implements LoginDao {
 	
 	
-	 public Boolean Login(@Param("id") String name, @Param("password") String password) {
+	 public Boolean Login_usr(@Param("id") String name, @Param("password") String password) {
 		 String sql = "select id,password from usr where id='"+name+"' and password='"+password+"'";
 		 boolean res=false;
 	    	try{
@@ -47,11 +47,39 @@ public class LoginDaoImpl implements LoginDao {
 	    		return false;
 	    	}
 	    }
-	    
-	
-	 
-	
-	 public boolean Register(@Param("name") String name, @Param("password") String password) {
+
+	public Boolean Login_doc(@Param("id") String name, @Param("password") String password) {
+		String sql = "select id,password from doctor where id='"+name+"' and password='"+password+"'";
+		boolean res=false;
+		try{
+			Connection conn = JdbcUtils.getConnection();
+			Statement stm = conn.createStatement();
+			ResultSet rs = stm.executeQuery(sql);
+
+			if(rs.next()) {
+				res=true;
+			}
+
+			rs.close();
+			stm.close();
+			conn.close();
+
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e);
+			return false;
+		}
+		if(res) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+
+
+	public boolean Register(@Param("name") String name, @Param("password") String password) {
 		 String sql = "insert into usr(id,name,password) values (REPLACE(UUID(),'-',''),'"+name+"','"+password+"')";
 
 	    	try{

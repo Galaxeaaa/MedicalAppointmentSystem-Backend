@@ -13,8 +13,11 @@ public class InfoServiceImpl implements InfoService {
 	@Autowired
 	 private InfoDao infoDao;
 	
-	public 	 boolean addInfo(String id,String name,String graph,String birth_date,String gender,String tel,String address) {
-		return infoDao.addInfo(id,name,graph,birth_date,gender,tel,address);
+	public 	 boolean addInfo_usr(String id,String name,String graph,String birth_date,String gender,String tel,String address) {
+		return infoDao.addInfo_usr(id,name,graph,birth_date,gender,tel,address);
+	}
+	public 	 boolean addInfo_doc(String id,String name,String graph,String birth_date,String gender,String tel,String address) {
+		return infoDao.addInfo_doc(id,name,graph,birth_date,gender,tel,address);
 	}
 	
 	  public List<User> getInfo(String name) {
