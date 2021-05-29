@@ -39,9 +39,23 @@ public class InfoDaoImpl implements InfoDao {
         }
 	}
 
-    public boolean addInfo_doc(String id,String name,String graph,String birth_date,String gender,String tel,String address) {
-        //id是指用户id
-        String sql="update doctor set name='"+name+"',birth_date='"+birth_date+"',graph='"+graph+"',gender='"+gender+"',tel='"+tel+"',address='"+address+"' where id='"+id+"'";
+    public boolean addInfo_doc(String id,
+                        String name,
+                        String title,
+                        String department,
+                        String hospital,
+                        String medicine,
+                        String introduction,
+                        String project,
+                        String registerID,
+                        int registerSum,
+                        int score,
+                        String evaluate,
+                        String email,
+                        String tel,
+                        String vx,
+                        Date registerTime){
+        String sql="update doctor set name='"+name+"',title='"+title+"',department='"+department+"',hospital='"+hospital+"',medicine='"+medicine+"',introduction='"+introduction+"' where id='"+id+"'";
         try{
             Connection conn = JdbcUtils.getConnection();
             Statement stm = conn.createStatement();
@@ -126,7 +140,7 @@ public class InfoDaoImpl implements InfoDao {
             			rs.getString("email"),
             			rs.getString("tel"),
             			rs.getString("vx"),
-                        rs.getTime("registerTime")
+                        rs.getDate("registerTime")
     			
             			);
             	reports.add(re);

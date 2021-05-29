@@ -1,5 +1,5 @@
 package com.example.demo;
-import java.sql.Time;
+import java.sql.Date;
 
 public class Doctor {
 	private String id;
@@ -17,12 +17,12 @@ public class Doctor {
 	private String email;
 	private String tel;
 	private String vx;
-	private Time registerTime;
+	private Date registerTime;
 	
 	public Doctor(String id,String name,String title,String department,String hospital,
 	String medicine,String introduction,String project,String registerID,
 	Integer registerSum, Integer score,String evaluate,String email,
-    String tel,String vx, Time registerTime) {
+    String tel,String vx, Date registerTime) {
 		this.id=id;
 		this.name=name;
 		this.title=title;
@@ -101,7 +101,7 @@ public class Doctor {
 		return department;
 	}
 	
-	public Time getRegisterTime() { 
+	public Date getRegisterTime() {
 		return registerTime; 
 	}
 }
