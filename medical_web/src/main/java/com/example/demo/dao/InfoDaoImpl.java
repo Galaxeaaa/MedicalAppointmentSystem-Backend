@@ -105,7 +105,8 @@ public class InfoDaoImpl implements InfoDao {
             			rs.getString("evaluate"),
             			rs.getString("email"),
             			rs.getString("tel"),
-            			rs.getString("vx")
+            			rs.getString("vx"),
+                        rs.getTime("registerTime")
     			
             			);
             	reports.add(re);
