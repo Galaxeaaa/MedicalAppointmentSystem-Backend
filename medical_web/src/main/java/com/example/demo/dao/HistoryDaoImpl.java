@@ -20,6 +20,7 @@ import com.example.demo.JdbcUtils;
 public class HistoryDaoImpl implements HistoryDao {
 	
     public boolean addHistory(History report) {
+    	//id是指用户id
 		String sql="insert into usr_history(id,case_name,advice,doctor,check_state,op_record,nur_record) values ('"+report.getId()+"','"+report.getCase_name()+"','"+report.getAdvice()+"','"+report.getDoctor()+"','"+report.getCheck_state()+"','"+report.getOp_record()+"','"+report.getNur_record()+"')";
 		try{
             Connection conn = JdbcUtils.getConnection();

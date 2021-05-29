@@ -13,6 +13,10 @@ public class InfoServiceImpl implements InfoService {
 	@Autowired
 	 private InfoDao infoDao;
 	
+	public 	 boolean addInfo(String id,String name,String graph,String birth_date,String gender,String tel,String address) {
+		return infoDao.addInfo(id,name,graph,birth_date,gender,tel,address);
+	}
+	
 	  public List<User> getInfo(String name) {
 		  
 		  return infoDao.getInfo(name);

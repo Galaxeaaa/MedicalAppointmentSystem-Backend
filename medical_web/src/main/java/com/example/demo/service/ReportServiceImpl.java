@@ -15,7 +15,7 @@ public class ReportServiceImpl implements ReportService {
 	
 	
 	 public boolean addReport(Report  report) {
-		 return true;
+		 return reportDao.addReport(report);
 	 }
 
 	 public boolean deleteReport(int id) {

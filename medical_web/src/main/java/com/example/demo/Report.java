@@ -12,7 +12,7 @@ public class Report {
 	private String department;
 	private String disease;
 	private String disease_descr;
-	private Timestamp rep_time;
+	private String rep_time;
 	private Boolean reg_state;
 	
 	public Report(Integer id,String usr_id,String usr_name,String doctor_id,String doctor_name,String department,String disease, String disease_descr,Timestamp rep_time,Boolean reg_state) {
@@ -25,8 +25,8 @@ public class Report {
 		this.disease=disease;
 		this.disease_descr=disease_descr;
 		this.reg_state=reg_state;
-		this.rep_time=rep_time;
-		
+//		this.rep_time=rep_time.replace('/','-');
+		this.rep_time=rep_time.toString();
 	}
 	
 	public String getUser_id() {
@@ -59,7 +59,7 @@ public class Report {
 		return this.disease_descr;
 	}
 	
-	public Timestamp getRep_time() {
+	public String getRep_time() {
 		return this.rep_time;
 	}
 	

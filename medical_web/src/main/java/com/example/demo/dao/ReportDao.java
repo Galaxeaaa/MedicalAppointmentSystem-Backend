@@ -24,7 +24,7 @@ public interface ReportDao {
      * 根据查询数据
      *
      */
-    @Select("select * from report where usr=#{usr}")
+    @Select("select * from report where usr_id=#{usr}")
     List<Report> getReports(@Param("usr") String usr, @Param("role") String role, String sql);
     
     @Select("select * from report where doctor_id=#{usr}")
