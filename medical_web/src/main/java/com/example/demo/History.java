@@ -1,7 +1,7 @@
 package com.example.demo;
 
-
 import java.sql.Time;
+import java.sql.Timestamp;
 
 public class History {
 	private int medicalHist;
@@ -12,8 +12,11 @@ public class History {
 	private String check_state;
 	private String op_record;
 	private String nur_record;
+	private String time;
+	private String detail;
+	private String department;
 	
-	public History(Integer medical,String name,String case_name, String advice, String doctor,String check_state, String op_record, String nur_record) {
+	public History(Integer medical,String name,String case_name, String advice, String doctor,String check_state, String op_record, String nur_record, Timestamp time, String detail, String department) {
 		this.medicalHist=medical;
 		this.id=name;
 		this.case_name=case_name;
@@ -22,6 +25,9 @@ public class History {
 		this.check_state=check_state;
 		this.op_record=op_record;
 		this.nur_record=nur_record;
+		this.time=time.toString();
+		this.detail=detail;
+		this.department=department;
 		
 	}
 	
@@ -53,6 +59,18 @@ public class History {
 	
 	public String getNur_record() {
 		return this.nur_record;
+	}
+
+	public String getTime() {
+		return this.time;
+	}
+
+	public String getDetail() {
+		return this.detail;
+	}
+
+	public String getDepartment() {
+		return this.department;
 	}
 	
 }

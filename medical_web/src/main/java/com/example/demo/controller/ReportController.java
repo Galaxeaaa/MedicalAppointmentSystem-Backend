@@ -19,12 +19,13 @@ public class ReportController {
         System.out.println("新增报告单");
         return reportService.addReport(report);
     }
-/*
-    @RequestMapping(value = "/user", method = RequestMethod.DELETE)
-    public boolean delete(@RequestParam(value = "id", required = true) int Id) {
-        System.out.println("删除数据：");
-        return userService.deleteUser(Id);
-    }*/
+
+    @RequestMapping(value = "/delreport", method = RequestMethod.GET)
+    public boolean delete(@RequestParam(value = "id", required = true) int id) {
+        System.out.println("删除数据报告单");
+        return reportService.delReport(id);
+//        return true;
+    }
 
 
     @RequestMapping(value = "/getreports", method = RequestMethod.GET)

@@ -9,7 +9,7 @@ public interface ReportService {
     
     boolean addReport(Report  report);
 
-    boolean deleteReport(int id);
+    boolean delReport(int id);
 
     List<Report> getReports(String userName, String role);
 

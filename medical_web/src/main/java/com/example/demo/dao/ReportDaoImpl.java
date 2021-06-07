@@ -41,8 +41,23 @@ public class ReportDaoImpl implements ReportDao {
 
     
 
-    public void deleteReport(int id) {
-    	
+    public boolean deleteReport(int id) {
+		String sql = "delete from report where id=" + id;
+		try{
+			Connection conn = JdbcUtils.getConnection();
+			Statement stm = conn.createStatement();
+			ResultSet rs = stm.executeQuery(sql);
+
+			rs.close();
+			stm.close();
+			conn.close();
+
+			return true;
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e);
+			return false;
+		}
     }
 
     /**

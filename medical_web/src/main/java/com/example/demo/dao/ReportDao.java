@@ -18,7 +18,7 @@ public interface ReportDao {
      * 删除数据
      */
     @Delete("delete from report where id=#{id}")
-    void deleteReport(int id);
+    boolean deleteReport(int id);
 
     /**
      * 根据查询数据

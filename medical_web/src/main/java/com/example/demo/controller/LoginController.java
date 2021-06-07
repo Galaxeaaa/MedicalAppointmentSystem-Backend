@@ -54,7 +54,7 @@ public class LoginController {
         }
     }
     
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @RequestMapping(value = "/register_usr", method = RequestMethod.GET)
     public boolean Register(@RequestParam(value = "name", required = true) String name,@RequestParam(value = "password", required = true) String password) {
         System.out.println("注册");
         if (this.Check_name(name)) {
@@ -76,7 +76,7 @@ public class LoginController {
            
     }
     
-    @RequestMapping(value = "/register/checkname", method = RequestMethod.GET)
+    @RequestMapping(value = "/register_usr/checkname", method = RequestMethod.GET)
     public boolean Check_name(@RequestParam(value = "name", required = true) String name) {
         System.out.println("checkname");
         

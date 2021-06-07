@@ -68,7 +68,10 @@ public class HistoryDaoImpl implements HistoryDao {
             			rs.getString("doctor"),
             			rs.getString("check_state"),
             			rs.getString("op_record"),
-            			rs.getString("nur_reocrd")			
+            			rs.getString("nur_reocrd"),
+                        rs.getTimestamp("time"),
+                        rs.getString("detail"),
+                        rs.getString("department")
             			);
             	reports.add(re);
             }

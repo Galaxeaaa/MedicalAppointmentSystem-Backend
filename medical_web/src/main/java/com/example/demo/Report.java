@@ -28,6 +28,8 @@ public class Report {
 //		this.rep_time=rep_time.replace('/','-');
 		this.rep_time=rep_time.toString();
 	}
+
+	public int getId() {return this.id;}
 	
 	public String getUser_id() {
 		return this.usr_id;
@@ -48,8 +50,8 @@ public class Report {
 	public String getDepartment() {
 		return this.department;
 	}
-	
-	
+
+
 	public String getDisease() {
 		return this.disease;
 	}

@@ -18,8 +18,8 @@ public class ReportServiceImpl implements ReportService {
 		 return reportDao.addReport(report);
 	 }
 
-	 public boolean deleteReport(int id) {
-		 return true;
+	 public boolean delReport(int id) {
+		 return reportDao.deleteReport(id);
 	 }
 
 	  public List<Report> getReports(String usr,String role) {
