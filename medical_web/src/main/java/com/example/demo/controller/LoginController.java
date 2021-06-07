@@ -65,11 +65,30 @@ public class LoginController {
            
     }
     
+    @RequestMapping(value = "/register_doc", method = RequestMethod.GET)
+    public boolean Register_doc(@RequestParam(value = "name", required = true) String name,@RequestParam(value = "password", required = true) String password) {
+        System.out.println("医生注册");
+        if (this.Check_name_doc(name)) {
+        	return false;
+        }  
+        else 
+        	return loginService.Register(name,password);
+           
+    }
+    
     @RequestMapping(value = "/register/checkname", method = RequestMethod.GET)
     public boolean Check_name(@RequestParam(value = "name", required = true) String name) {
         System.out.println("checkname");
         
        return loginService.Check_name(name);
+           
+    }
+    
+    @RequestMapping(value = "/register_doc/checkname", method = RequestMethod.GET)
+    public boolean Check_name_doc(@RequestParam(value = "name", required = true) String name) {
+        System.out.println("checkname");
+        
+       return loginService.Check_name_doc(name);
            
     }
     
@@ -88,6 +107,8 @@ public class LoginController {
             return false;
         }
     }
+    
+    
 
 }
 
