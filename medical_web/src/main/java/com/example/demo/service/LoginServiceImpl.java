@@ -42,9 +42,25 @@ public boolean Register(String name,String pwd) {
 		  
 		  
 	  }
+public boolean Register_doc(String name,String pwd) {
+	  
+	  return loginDao.Register_doctor(name,pwd);
+	  
+	  
+}
 public boolean Check_name(String name) {
 	  
 	  Boolean res= loginDao.Check_name(name);
+	  if(res==null)
+		  return false;
+	  else
+		  return true;
+	  
+	  
+}
+public boolean Check_name_doc(String name) {
+	  
+	  Boolean res= loginDao.Check_name_doctor(name);
 	  if(res==null)
 		  return false;
 	  else

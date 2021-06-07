@@ -28,7 +28,7 @@ public class ReportController {
 
 
     @RequestMapping(value = "/getreports", method = RequestMethod.GET)
-    public List<Report> getReports(@RequestParam(value = "usr", required = true) String usr, @RequestParam(value = "role", required = true) String role) {
+    public List<Report> getReports(@RequestParam(value = "usr", required = false) String usr, @RequestParam(value = "role", required = true) String role) {
         System.out.println("查询报告单：");
         
        return reportService.getReports(usr,role);

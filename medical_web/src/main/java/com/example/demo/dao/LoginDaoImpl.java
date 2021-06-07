@@ -80,7 +80,7 @@ public class LoginDaoImpl implements LoginDao {
 
 
 	public boolean Register(@Param("name") String name, @Param("password") String password) {
-		 String sql = "insert into usr(id,name,password) values (REPLACE(UUID(),'-',''),'"+name+"','"+password+"')";
+		 String sql = "insert into usr(id,password) values ('"+name+"','"+password+"')";
 
 	    	try{
 	            Connection conn = JdbcUtils.getConnection();
@@ -99,12 +99,60 @@ public class LoginDaoImpl implements LoginDao {
 	        }
 	 }
  
+	 public Boolean Register_doctor(@Param("name") String name,@Param("password") String password) {
+		 String sql = "insert into doctor(id,password) values ('"+name+"','"+password+"')";
+
+	    	try{
+	            Connection conn = JdbcUtils.getConnection();
+	            Statement stm = conn.createStatement();        
+	            ResultSet rs = stm.executeQuery(sql);
+	          
+	            rs.close();
+	            stm.close();
+	            conn.close();
+	            
+	            return true;
+	        }catch (Exception e) {
+	            e.printStackTrace();
+	            System.out.println(e);
+	            return false;
+	        }
+	 }
+	 
 		 
 	 
 	 
 
 	 public Boolean Check_name(@Param("name") String name) {
 		 String sql = "select name from usr where name='"+name+"'";
+		 boolean res=false;
+	    	try{
+	            Connection conn = JdbcUtils.getConnection();
+	            Statement stm = conn.createStatement();        
+	            ResultSet rs = stm.executeQuery(sql);
+	                
+	            if(rs.next()) {
+	            	res=true;
+	            }	           
+	            rs.close();
+	            stm.close();
+	            conn.close();
+	            
+	        }catch (Exception e) {
+	            e.printStackTrace();
+	            System.out.println(e);
+	            return false;
+	        }
+	    	if(res) {
+	    		return true;
+	    	}
+	    	else {
+	    		return false;
+	    	}
+	 }
+	 
+	 public Boolean Check_name_doctor(@Param("name") String name) {
+		 String sql = "select name from doctor where name='"+name+"'";
 		 boolean res=false;
 	    	try{
 	            Connection conn = JdbcUtils.getConnection();
