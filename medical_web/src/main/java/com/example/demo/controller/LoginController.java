@@ -68,13 +68,16 @@ public class LoginController {
     
     @RequestMapping(value = "/register_doc", method = RequestMethod.GET)
     public boolean Register_doc(@RequestParam(value = "name", required = true) String name,@RequestParam(value = "password", required = true) String password,
-                                @RequestParam(value = "tel", required = true) String tel) {
+                                @RequestParam(value = "tel", required = true) String tel,
+                                @RequestParam(value = "title", required = true) String title,
+                                @RequestParam(value = "department", required = true) String department,
+                                @RequestParam(value = "hospital", required = true) String hospital) {
         System.out.println("医生注册");
         if (this.Check_name_doc(name)) {
         	return false;
         }  
         else 
-        	return loginService.Register_doc(name,password, tel);
+        	return loginService.Register_doc(name,password, tel, title, department, hospital);
            
     }
     

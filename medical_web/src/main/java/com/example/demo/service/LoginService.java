@@ -13,6 +13,6 @@ public interface LoginService {
 	 boolean Check_name(String name);
 	 boolean Check_name_doc(String name);
 	 boolean Register(String name,String pwd, String tel);
-	 boolean Register_doc(String name,String pwd, String tel);
+	 boolean Register_doc(String name,String pwd, String tel, String title, String department, String hospital);
 	 
 }

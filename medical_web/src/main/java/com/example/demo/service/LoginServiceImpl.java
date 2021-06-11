@@ -42,9 +42,9 @@ public boolean Register(String name,String pwd, String tel) {
 		  
 		  
 	  }
-public boolean Register_doc(String name,String pwd, String tel) {
+public boolean Register_doc(String name,String pwd, String tel, String title, String department, String hospital) {
 	  
-	  return loginDao.Register_doctor(name,pwd, tel);
+	  return loginDao.Register_doctor(name,pwd, tel, title, department, hospital);
 	  
 	  
 }

@@ -99,8 +99,9 @@ public class LoginDaoImpl implements LoginDao {
 	        }
 	 }
  
-	 public Boolean Register_doctor(@Param("name") String name,@Param("password") String password, @Param("tel")String tel) {
-		 String sql = "insert into doctor(id,password,tel, registerTime) values ('"+name+"','"+password+"','"+tel+"', curdate())";
+	 public Boolean Register_doctor(@Param("name") String name,@Param("password") String password, @Param("tel")String tel,
+									@Param("title")String title, @Param("department")String department, @Param("hospital")String hospital) {
+		 String sql = "insert into doctor(id,password,tel, registerTime, title, department, hospital) values ('"+name+"','"+password+"','"+tel+"', curdate(), '"+title+"','"+department+"','"+hospital+"')";
 
 	    	try{
 	            Connection conn = JdbcUtils.getConnection();

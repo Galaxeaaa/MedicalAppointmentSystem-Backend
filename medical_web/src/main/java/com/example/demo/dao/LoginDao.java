@@ -19,8 +19,9 @@ public interface LoginDao {
 	 @Insert("insert into usr(id,password, tel)  values (#{name},#{password}, #{tel})")
 	 boolean Register(@Param("name") String name, @Param("password") String password, @Param("tel") String tel);
 	 
-	 @Insert("insert into doctor(id,password, tel, registerTime)  values (#{name},#{password}, #{tel}, curdate())")
-	 Boolean Register_doctor(@Param("name") String name,@Param("password") String password, @Param("tel") String tel);
+	 @Insert("insert into doctor(id,password, tel, registerTime, title, department, hospital)  values (#{name},#{password}, #{tel}, curdate(), #{title}, #{department}, #{hospital})")
+	 Boolean Register_doctor(@Param("name") String name,@Param("password") String password, @Param("tel") String tel,
+							 @Param("title")String title, @Param("department")String department, @Param("hospital")String hospital);
 	 
 	
 	 @Select("select name from usr where id=#{name}")
