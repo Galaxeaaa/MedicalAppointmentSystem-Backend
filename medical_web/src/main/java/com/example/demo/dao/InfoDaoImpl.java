@@ -8,11 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import com.example.demo.*;
 
@@ -156,6 +152,44 @@ public class InfoDaoImpl implements InfoDao {
             return null;
         }
     }
-    
 
+    @Override
+    public boolean chpswd_usr(String id, String newpswd){
+        String sql="update usr set password='"+newpswd+"' where id='"+id+"'";
+        try{
+            Connection conn = JdbcUtils.getConnection();
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            rs.close();
+            stm.close();
+            conn.close();
+
+            return true;
+        }catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean chpswd_doc(String id, String newpswd){
+        String sql="update doctor set password='"+newpswd+"' where id='"+id+"'";
+        try{
+            Connection conn = JdbcUtils.getConnection();
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            rs.close();
+            stm.close();
+            conn.close();
+
+            return true;
+        }catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+            return false;
+        }
+    }
 }

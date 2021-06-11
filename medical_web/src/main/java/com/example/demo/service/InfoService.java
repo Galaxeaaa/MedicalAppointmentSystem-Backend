@@ -25,6 +25,8 @@ public interface InfoService {
 			String tel,
 			String vx,
 			Date registerTime);
-		 
+
+	boolean chpswd(boolean isdoc, String id, String newpswd);
+
 	 
 }

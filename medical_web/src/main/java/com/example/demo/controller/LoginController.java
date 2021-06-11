@@ -55,24 +55,26 @@ public class LoginController {
     }
     
     @RequestMapping(value = "/register_usr", method = RequestMethod.GET)
-    public boolean Register(@RequestParam(value = "name", required = true) String name,@RequestParam(value = "password", required = true) String password) {
+    public boolean Register(@RequestParam(value = "name", required = true) String name,@RequestParam(value = "password", required = true) String password,
+                            @RequestParam(value = "tel", required = true) String tel) {
         System.out.println("注册");
         if (this.Check_name(name)) {
         	return false;
         }  
         else 
-        	return loginService.Register(name,password);
+        	return loginService.Register(name,password, tel);
            
     }
     
     @RequestMapping(value = "/register_doc", method = RequestMethod.GET)
-    public boolean Register_doc(@RequestParam(value = "name", required = true) String name,@RequestParam(value = "password", required = true) String password) {
+    public boolean Register_doc(@RequestParam(value = "name", required = true) String name,@RequestParam(value = "password", required = true) String password,
+                                @RequestParam(value = "tel", required = true) String tel) {
         System.out.println("医生注册");
         if (this.Check_name_doc(name)) {
         	return false;
         }  
         else 
-        	return loginService.Register(name,password);
+        	return loginService.Register_doc(name,password, tel);
            
     }
     

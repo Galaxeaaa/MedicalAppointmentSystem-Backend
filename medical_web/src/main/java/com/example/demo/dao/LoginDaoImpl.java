@@ -79,8 +79,8 @@ public class LoginDaoImpl implements LoginDao {
 
 
 
-	public boolean Register(@Param("name") String name, @Param("password") String password) {
-		 String sql = "insert into usr(id,password) values ('"+name+"','"+password+"')";
+	public boolean Register(@Param("name") String name, @Param("password") String password, @Param("tel")String tel) {
+		 String sql = "insert into usr(id,password, tel) values ('"+name+"','"+password+"','"+tel+"')";
 
 	    	try{
 	            Connection conn = JdbcUtils.getConnection();
@@ -99,8 +99,8 @@ public class LoginDaoImpl implements LoginDao {
 	        }
 	 }
  
-	 public Boolean Register_doctor(@Param("name") String name,@Param("password") String password) {
-		 String sql = "insert into doctor(id,password) values ('"+name+"','"+password+"')";
+	 public Boolean Register_doctor(@Param("name") String name,@Param("password") String password, @Param("tel")String tel) {
+		 String sql = "insert into doctor(id,password,tel, registerTime) values ('"+name+"','"+password+"','"+tel+"', curdate())";
 
 	    	try{
 	            Connection conn = JdbcUtils.getConnection();

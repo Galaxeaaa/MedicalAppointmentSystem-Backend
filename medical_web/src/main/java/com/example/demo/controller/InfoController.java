@@ -57,4 +57,13 @@ public class InfoController {
        return infoService.getInfo_doctor(id); 
     }
 
+    @RequestMapping(value="/chpswd", method = RequestMethod.GET)
+    public boolean chpswd(@RequestParam(value="isdoc", required = true) boolean isdoc,
+                          @RequestParam(value = "id", required = true) String id,
+                          @RequestParam(value="newpswd", required = true) String newpswd){
+        if(isdoc) System.out.println("doc修改密码");
+        else System.out.println("usr修改密码");
+        return infoService.chpswd(isdoc, id, newpswd);
+    }
+
 }

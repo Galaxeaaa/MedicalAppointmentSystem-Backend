@@ -36,15 +36,15 @@ public class LoginServiceImpl implements LoginService {
 			return true;
 
 	}
-public boolean Register(String name,String pwd) {
+public boolean Register(String name,String pwd, String tel) {
 		  
-		  return loginDao.Register(name,pwd);
+		  return loginDao.Register(name,pwd, tel);
 		  
 		  
 	  }
-public boolean Register_doc(String name,String pwd) {
+public boolean Register_doc(String name,String pwd, String tel) {
 	  
-	  return loginDao.Register_doctor(name,pwd);
+	  return loginDao.Register_doctor(name,pwd, tel);
 	  
 	  
 }

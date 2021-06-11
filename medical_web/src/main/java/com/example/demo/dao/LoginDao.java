@@ -16,11 +16,11 @@ public interface LoginDao {
 	Boolean Login_doc(@Param("id") String name, @Param("password") String password);
 	 
 	 
-	 @Insert("insert into usr(id,password)  values (#{name},#{password})")
-	 boolean Register(@Param("name") String name, @Param("password") String password);
+	 @Insert("insert into usr(id,password, tel)  values (#{name},#{password}, #{tel})")
+	 boolean Register(@Param("name") String name, @Param("password") String password, @Param("tel") String tel);
 	 
-	 @Insert("insert into doctor(id,password)  values (#{name},#{password})")
-	 Boolean Register_doctor(@Param("name") String name,@Param("password") String password);
+	 @Insert("insert into doctor(id,password, tel, registerTime)  values (#{name},#{password}, #{tel}, curdate())")
+	 Boolean Register_doctor(@Param("name") String name,@Param("password") String password, @Param("tel") String tel);
 	 
 	
 	 @Select("select name from usr where id=#{name}")

@@ -50,4 +50,8 @@ public class InfoServiceImpl implements InfoService {
 		  return infoDao.getInfo_doctor(id);
 		  		  
 	  }
+
+	public boolean chpswd(boolean isdoc, String id, String newpswd){
+		return isdoc ? infoDao.chpswd_doc(id, newpswd) : infoDao.chpswd_usr(id, newpswd);
+	}
 }

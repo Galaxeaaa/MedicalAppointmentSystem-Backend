@@ -36,5 +36,11 @@ public interface InfoDao {
 						String tel,
 						String vx,
 						Date registerTime);
-	   
+
+
+	@Update("update usr set password=#{newpswd} where id=#{id}")
+	boolean chpswd_usr(String id, String newpswd);
+
+	@Update("update doctor set password=#{newpswd} where id=#{id}")
+	boolean chpswd_doc(String id, String newpswd);
 }
