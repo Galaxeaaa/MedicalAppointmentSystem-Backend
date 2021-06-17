@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.History;
+import com.example.demo.Question;
 import com.example.demo.dao.*;
 
 import java.util.List;
@@ -12,12 +13,21 @@ import org.springframework.stereotype.Service;
 public class LoginServiceImpl implements LoginService {
 	@Autowired
 	 private LoginDao loginDao;
-	
-	
+
+	public List<Question> getQuestions_usr(String id)
+	{
+		return loginDao.getQuestions_usr(id);
+	}
+
+	public Boolean chPswd_usr(String id, String pswd)
+	{
+		return loginDao.chPswd_usr(id, pswd);
+	}
+
 	  public boolean Login_usr(String name,String pwd) {
 		 // String sql = "select name,password from usr where name='"+name+"' and password='"+pwd+"'";
 		 // System.out.println(sql);
-		  Boolean res= loginDao.Login_usr(name,pwd);
+		  Integer res= loginDao.Login_usr(name,pwd);
 
 		  if(res==null)
 			  return false;
@@ -28,7 +38,7 @@ public class LoginServiceImpl implements LoginService {
 	public boolean Login_doc(String name,String pwd) {
 		// String sql = "select name,password from usr where name='"+name+"' and password='"+pwd+"'";
 		// System.out.println(sql);
-		Boolean res= loginDao.Login_doc(name,pwd);
+		Integer res= loginDao.Login_doc(name,pwd);
 
 		if(res==null)
 			return false;
@@ -36,9 +46,9 @@ public class LoginServiceImpl implements LoginService {
 			return true;
 
 	}
-public boolean Register(String name,String pwd, String tel) {
+public boolean Register(String name,String pwd, String tel, String question1, String answer1, String question2, String answer2, String question3, String answer3) {
 		  
-		  return loginDao.Register(name,pwd, tel);
+		  return loginDao.Register(name,pwd, tel, question1, answer1, question2, answer2, question3, answer3);
 		  
 		  
 	  }

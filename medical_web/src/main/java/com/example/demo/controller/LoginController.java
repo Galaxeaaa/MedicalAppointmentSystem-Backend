@@ -18,6 +18,20 @@ public class LoginController {
     @Autowired
     private LoginServiceImpl loginService;
 
+    @RequestMapping(value = "/getq_usr", method = RequestMethod.GET)
+    public List<Question> getQuestions_usr(@RequestParam(value = "id", required = true) String id) {
+        System.out.println("usr获得安全问题");
+
+        return loginService.getQuestions_usr(id);
+    }
+
+    @RequestMapping(value = "/chpswd_usr", method = RequestMethod.GET)
+    public Boolean chPswd_usr(@RequestParam(value = "id", required = true) String id, @RequestParam(value = "newpswd", required = true) String pswd) {
+        System.out.println("usr更改密码");
+
+        return loginService.chPswd_usr(id, pswd);
+    }
+
     @RequestMapping(value = "/login_usr", method = RequestMethod.GET)
     public boolean Login_usr(@RequestParam(value = "id", required = true) String name,@RequestParam(value = "password", required = true) String password, Map<String,Object> map,HttpServletRequest request) {
         System.out.println("usr登录");
@@ -55,14 +69,22 @@ public class LoginController {
     }
     
     @RequestMapping(value = "/register_usr", method = RequestMethod.GET)
-    public boolean Register(@RequestParam(value = "name", required = true) String name,@RequestParam(value = "password", required = true) String password,
-                            @RequestParam(value = "tel", required = true) String tel) {
-        System.out.println("注册");
+    public boolean Register(@RequestParam(value = "name", required = true) String name,
+                            @RequestParam(value = "password", required = true) String password,
+                            @RequestParam(value = "tel", required = true) String tel,
+                            @RequestParam(value = "question1", required = true) String question1,
+                            @RequestParam(value = "answer1", required = true) String answer1,
+                            @RequestParam(value = "question2", required = true) String question2,
+                            @RequestParam(value = "answer2", required = true) String answer2,
+                            @RequestParam(value = "question3", required = true) String question3,
+                            @RequestParam(value = "answer3", required = true) String answer3)
+    {
+        System.out.println("用户注册");
         if (this.Check_name(name)) {
         	return false;
         }  
         else 
-        	return loginService.Register(name,password, tel);
+        	return loginService.Register(name,password, tel, question1, answer1, question2, answer2, question3, answer3);
            
     }
     

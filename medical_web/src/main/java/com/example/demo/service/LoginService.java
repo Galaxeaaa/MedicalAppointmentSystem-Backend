@@ -12,7 +12,7 @@ public interface LoginService {
 	 boolean Login_usr(String userName,String pwd);
 	 boolean Check_name(String name);
 	 boolean Check_name_doc(String name);
-	 boolean Register(String name,String pwd, String tel);
+	 boolean Register(String name,String pwd, String tel, String question1, String answer1, String question2, String answer2, String question3, String answer3);
 	 boolean Register_doc(String name,String pwd, String tel, String title, String department, String hospital);
 	 
 }

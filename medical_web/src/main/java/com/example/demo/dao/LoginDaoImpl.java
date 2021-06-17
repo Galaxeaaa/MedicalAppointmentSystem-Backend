@@ -17,47 +17,26 @@ import com.example.demo.*;
 
 @Mapper
 public class LoginDaoImpl implements LoginDao {
-	
-	
-	 public Boolean Login_usr(@Param("id") String name, @Param("password") String password) {
-		 String sql = "select id,password from usr where id='"+name+"' and password='"+password+"'";
-		 boolean res=false;
-	    	try{
-	            Connection conn = JdbcUtils.getConnection();
-	            Statement stm = conn.createStatement();        
-	            ResultSet rs = stm.executeQuery(sql);
-	               
-	            if(rs.next()) {
-	            	res=true;
-	            }
-	           
-	            rs.close();
-	            stm.close();
-	            conn.close();
 
-	        }catch (Exception e) {
-	            e.printStackTrace();
-	            System.out.println(e);
-	            return false;
-	        }
-	    	if(res) {
-	    		return true;
-	    	}
-	    	else {
-	    		return false;
-	    	}
-	    }
+	public List<Question> getQuestions_usr(@Param("id") String name){
+		return null;
+	}
 
-	public Boolean Login_doc(@Param("id") String name, @Param("password") String password) {
-		String sql = "select id,password from doctor where id='"+name+"' and password='"+password+"'";
-		boolean res=false;
+	public Boolean chPswd_usr(@Param("id") String id, @Param("password") String pswd){
+		return null;
+	}
+
+	public Integer Login_usr(@Param("id") String id, @Param("password") String password) {
+		String sql = "select count(*) as cnt from usr where id='"+id+"' and password='"+password+"'";
+		Integer res=0;
 		try{
 			Connection conn = JdbcUtils.getConnection();
 			Statement stm = conn.createStatement();
 			ResultSet rs = stm.executeQuery(sql);
 
 			if(rs.next()) {
-				res=true;
+				res=rs.getInt("cnt");
+
 			}
 
 			rs.close();
@@ -67,19 +46,38 @@ public class LoginDaoImpl implements LoginDao {
 		}catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(e);
-			return false;
+			return 0;
 		}
-		if(res) {
-			return true;
+		return res;
+	}
+
+	public Integer Login_doc(@Param("id") String name, @Param("password") String password) {
+		String sql = "select count(*) as cnt from doctor where id='"+name+"' and password='"+password+"'";
+		Integer res=0;
+		try{
+			Connection conn = JdbcUtils.getConnection();
+			Statement stm = conn.createStatement();
+			ResultSet rs = stm.executeQuery(sql);
+
+			if(rs.next()) {
+				res=rs.getInt("cnt");
+			}
+
+			rs.close();
+			stm.close();
+			conn.close();
+
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e);
+			return 0;
 		}
-		else {
-			return false;
-		}
+		return res;
 	}
 
 
 
-	public boolean Register(@Param("name") String name, @Param("password") String password, @Param("tel")String tel) {
+	public boolean Register(@Param("name") String name, @Param("password") String password, @Param("tel") String tel, @Param("question1") String question1, @Param("answer1") String answer1, @Param("question2") String question2, @Param("answer2") String answer2, @Param("question3") String question3, @Param("answer3") String answer3) {
 		 String sql = "insert into usr(id,password, tel) values ('"+name+"','"+password+"','"+tel+"')";
 
 	    	try{
