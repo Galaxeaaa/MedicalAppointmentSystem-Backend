@@ -38,21 +38,39 @@ public class InfoServiceImpl implements InfoService {
 						Date registerTime){
 		return infoDao.addInfo_doc(id, name, title, department, hospital, medicine, introduction, project, registerID, registerSum, score, evaluate, tel, vx, email, registerTime);
 	}
-	
+
+	public boolean setregister_doc(String id){
+		return infoDao.setregister_doc(id);
+	}
+
 	  public List<User> getInfo(String name) {
 		  
 		  return infoDao.getInfo(name);
 		  		  
 	  }
 	  
- public List<Doctor> getInfo_doctor(String id) {
+ public List<Doctor> getInfo_doctor(String id, String department) {
 		  
-		  return infoDao.getInfo_doctor(id);
+		  return infoDao.getInfo_doctor(id,department);
 		  		  
 	  }
-	public List<Doctor> getInfo_doctor_department(String id,String department) {
 
-		return infoDao.getInfo_doctor_department(id,department);
+	public List<Doctor> getInfo_doctorall() {
+
+		return infoDao.getInfo_doctorall();
+
+	}
+
+	public List<Doctor> getInfo_doctorname(String name) {
+
+		return infoDao.getInfo_doctorname(name);
+
+	}
+
+
+	public int getInfo_isregister(String id) {
+
+		return infoDao.getInfo_isregister(id);
 
 	}
 }
