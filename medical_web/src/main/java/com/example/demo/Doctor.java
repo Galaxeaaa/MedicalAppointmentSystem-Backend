@@ -24,20 +24,20 @@ public class Doctor {
 	Integer registerSum, Integer score,String evaluate,String email,
     String tel,String vx, Date registerTime) {
 		this.id=id;
-		this.name=name==null ? "" : name;
-		this.title=title==null ? "" : title;
-		this.department=department==null ? "" : department;
-		this.hospital=hospital==null ? "" : hospital;
-		this.medicine=medicine==null ? "" : medicine;
-		this.introduction=introduction==null ? "" : introduction;
-		this.project=project==null ? "" : project;
-		this.registerID=registerID==null ? "" : registerID;
-		this.registerSum=registerSum==null ? 0 : registerSum;
-		this.score=score==null ? 0 : score;
-		this.evaluate=evaluate==null ? "" : evaluate;
-		this.tel=tel==null ? "" : tel;
-		this.vx=vx==null ? "" : vx;
-		this.email=email==null ? "" : email;
+		this.name=name;
+		this.title=title;
+		this.department=department;
+		this.hospital=hospital;
+		this.medicine=medicine;
+		this.introduction=introduction;
+		this.project=project;
+		this.registerID=registerID;
+		this.registerSum=registerSum;
+		this.score=score;
+		this.evaluate=evaluate;
+		this.tel=tel;
+		this.vx=vx;
+		this.email=email;
 		this.registerTime=registerTime;
 	}
 	

@@ -15,6 +15,22 @@ public interface InfoDao {
 	   
 	 @Select("select id, name, title, department, hospital, medicine, introduction, project, registerID, registerSum, score, evaluate, tel, vx, email, registerTime from doctor where id=#{id}")
 	    List<Doctor> getInfo_doctor(@Param("id") String id);
+
+	@Select("<script>"+
+			"select id, name, title, department, hospital, medicine, introduction, project, registerID, registerSum, score, evaluate, tel, vx, email, registerTime from doctor " +
+			"<where>" +
+			"department=#{department}"+
+			"<choose>"+
+			"<when test='id!=null'>"+
+			"and id=#{id}"+
+			"</when>"+
+			"<otherwise>"+
+			"and id is not null"+
+			"</otherwise>"+
+			"</choose>"+
+			"</where>"+
+			"</script>")
+	List<Doctor> getInfo_doctor_department(@Param("id") String id,@Param("department") String department);
 	 
 	 @Update("update usr set name=#{name},graph=#{graph},birth_date=#{birth_date},gender=#{gender},tel=#{tel},address=#{address} where id=#{id}")
 	 boolean addInfo_usr(String id,String name,String graph,String birth_date,String gender,String tel,String address);
@@ -36,11 +52,5 @@ public interface InfoDao {
 						String tel,
 						String vx,
 						Date registerTime);
-
-
-	@Update("update usr set password=#{newpswd} where id=#{id}")
-	boolean chpswd_usr(String id, String newpswd);
-
-	@Update("update doctor set password=#{newpswd} where id=#{id}")
-	boolean chpswd_doc(String id, String newpswd);
+	   
 }

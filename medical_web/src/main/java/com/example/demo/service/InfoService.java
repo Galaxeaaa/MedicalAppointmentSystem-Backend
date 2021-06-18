@@ -8,6 +8,7 @@ import com.example.demo.*;
 public interface InfoService {
 	 List<User> getInfo(String userName);
 	 List<Doctor> getInfo_doctor(String userName);
+	List<Doctor> getInfo_doctor_department(String id,String userName);
 	 boolean addInfo_usr(String id,String name,String graph,String birth_date,String gender,String tel,String address);
 	boolean addInfo_doc(String id,
 			String name,
@@ -25,8 +26,6 @@ public interface InfoService {
 			String tel,
 			String vx,
 			Date registerTime);
-
-	boolean chpswd(boolean isdoc, String id, String newpswd);
-
+		 
 	 
 }

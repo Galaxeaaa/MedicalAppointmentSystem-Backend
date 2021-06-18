@@ -8,7 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import com.example.demo.*;
 
@@ -111,8 +115,9 @@ public class InfoDaoImpl implements InfoDao {
     
     @Override
     public List<Doctor> getInfo_doctor(@Param("id") String id){
-    	String sql = "select * from doctor where id='"+id+"'";
-    		
+        return null;
+    	/*String sql = "select * from doctor where id='"+id+"'";
+        System.out.println(" "+sql);
     	try{
             Connection conn = JdbcUtils.getConnection();
             Statement stm = conn.createStatement();        
@@ -150,46 +155,53 @@ public class InfoDaoImpl implements InfoDao {
             e.printStackTrace();
             System.out.println(e);
             return null;
-        }
+        }*/
     }
 
     @Override
-    public boolean chpswd_usr(String id, String newpswd){
-        String sql="update usr set password='"+newpswd+"' where id='"+id+"'";
+    public List<Doctor> getInfo_doctor_department(@Param("id") String id,@Param("department") String department){
+        String sql = "select * from doctor where department='"+department+"'"+"and id='"+id+"'";
+        if(id==null)
+            sql = "select * from doctor where department='"+department+"'";
+        System.out.println(sql);
         try{
             Connection conn = JdbcUtils.getConnection();
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery(sql);
+            List<Doctor> reports=new ArrayList<Doctor>();
 
+            while(rs.next()){
+                Doctor re=new Doctor(
+                        rs.getString("id"),
+                        rs.getString("name"),
+                        rs.getString("title"),
+                        rs.getString("department"),
+                        rs.getString("hospital"),
+                        rs.getString("medicine"),
+                        rs.getString("introduction"),
+                        rs.getString("project"),
+                        rs.getString("registerID"),
+                        rs.getInt("registerSum"),
+                        rs.getInt("score"),
+                        rs.getString("evaluate"),
+                        rs.getString("email"),
+                        rs.getString("tel"),
+                        rs.getString("vx"),
+                        rs.getDate("registerTime")
+
+                );
+                reports.add(re);
+            }
             rs.close();
             stm.close();
             conn.close();
 
-            return true;
+            return reports;
         }catch (Exception e) {
             e.printStackTrace();
             System.out.println(e);
-            return false;
+            return null;
         }
     }
 
-    @Override
-    public boolean chpswd_doc(String id, String newpswd){
-        String sql="update doctor set password='"+newpswd+"' where id='"+id+"'";
-        try{
-            Connection conn = JdbcUtils.getConnection();
-            Statement stm = conn.createStatement();
-            ResultSet rs = stm.executeQuery(sql);
-
-            rs.close();
-            stm.close();
-            conn.close();
-
-            return true;
-        }catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e);
-            return false;
-        }
-    }
 }

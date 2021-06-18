@@ -57,13 +57,11 @@ public class InfoController {
        return infoService.getInfo_doctor(id); 
     }
 
-    @RequestMapping(value="/chpswd", method = RequestMethod.GET)
-    public boolean chpswd(@RequestParam(value="isdoc", required = true) boolean isdoc,
-                          @RequestParam(value = "id", required = true) String id,
-                          @RequestParam(value="newpswd", required = true) String newpswd){
-        if(isdoc) System.out.println("doc修改密码");
-        else System.out.println("usr修改密码");
-        return infoService.chpswd(isdoc, id, newpswd);
+    @RequestMapping(value = "/getinfo/doctordepartment", method = RequestMethod.GET)
+    public List<Doctor> getInfo_doctor_department(@RequestParam(value = "id", required = true) String id,@RequestParam(value = "department", required = true) String department) {
+        System.out.println("医生个人信息");
+
+        return infoService.getInfo_doctor_department(id,department);
     }
 
 }
