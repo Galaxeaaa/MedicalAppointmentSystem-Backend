@@ -31,6 +31,13 @@ public class LoginController {
 
         return loginService.chPswd_usr(id, pswd);
     }
+    
+    @RequestMapping(value = "/chpswd_doc", method = RequestMethod.GET)
+    public Boolean chPswd_doc(@RequestParam(value = "id", required = true) String id, @RequestParam(value = "newpswd", required = true) String pswd) {
+        System.out.println("doc更改密码");
+
+        return loginService.chPswd_doc(id, pswd);
+    }
 
     @RequestMapping(value = "/login_usr", method = RequestMethod.GET)
     public boolean Login_usr(@RequestParam(value = "id", required = true) String name,@RequestParam(value = "password", required = true) String password, Map<String,Object> map,HttpServletRequest request) {
