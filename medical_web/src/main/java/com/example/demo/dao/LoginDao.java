@@ -14,6 +14,9 @@ public interface LoginDao {
 
 	@Select("update usr set password=#{password} where id=#{id}")
 	Boolean chPswd_usr(@Param("id") String name, @Param("password") String pswd);
+	
+	@Select("update doctor set password=#{password} where id=#{id}")
+	Boolean chPswd_doc(@Param("id") String name, @Param("password") String pswd);
 
 	 @Select("select count(*) as cnt from usr where id=#{id} and password=#{password}")
 	 Integer Login_usr(@Param("id") String id, @Param("password") String password);
