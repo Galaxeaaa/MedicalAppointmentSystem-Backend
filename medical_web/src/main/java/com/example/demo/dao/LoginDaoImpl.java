@@ -25,6 +25,10 @@ public class LoginDaoImpl implements LoginDao {
 	public Boolean chPswd_usr(@Param("id") String id, @Param("password") String pswd){
 		return null;
 	}
+	
+	public Boolean chPswd_doc(@Param("id") String id, @Param("password") String pswd){
+		return null;
+	}
 
 	public Integer Login_usr(@Param("id") String id, @Param("password") String password) {
 		String sql = "select count(*) as cnt from usr where id='"+id+"' and password='"+password+"'";

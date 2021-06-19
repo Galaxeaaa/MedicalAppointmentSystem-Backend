@@ -23,6 +23,11 @@ public class LoginServiceImpl implements LoginService {
 	{
 		return loginDao.chPswd_usr(id, pswd);
 	}
+	
+	public Boolean chPswd_doc(String id, String pswd)
+	{
+		return loginDao.chPswd_doc(id, pswd);
+	}
 
 	  public boolean Login_usr(String name,String pwd) {
 		 // String sql = "select name,password from usr where name='"+name+"' and password='"+pwd+"'";
