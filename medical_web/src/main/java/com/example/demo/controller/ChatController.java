@@ -89,7 +89,7 @@ public class ChatController {
             String fileName = file.getOriginalFilename();
             String datePath = new Date().getTime()+"_";
             fileName = datePath+fileName;
-            fileName = "ChatPic/" + fileName;
+            fileName = "ChatFile/" + fileName;
 
             //调用oss方法实现上传
             //第一个参数  Bucket名称

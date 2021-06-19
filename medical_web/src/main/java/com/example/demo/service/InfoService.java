@@ -7,9 +7,13 @@ import com.example.demo.*;
 
 public interface InfoService {
 	 List<User> getInfo(String userName);
-	 List<Doctor> getInfo_doctor(String userName);
-	List<Doctor> getInfo_doctor_department(String id,String userName);
+	 List<Doctor> getInfo_doctor(String id, String department);
+	List<Doctor> getInfo_doctorall();
+	List<Doctor> getInfo_doctorname(String userName);
+
+	int getInfo_isregister(String userName);
 	 boolean addInfo_usr(String id,String name,String graph,String birth_date,String gender,String tel,String address);
+	boolean setregister_doc(String id);
 	boolean addInfo_doc(String id,
 			String name,
 			String title,

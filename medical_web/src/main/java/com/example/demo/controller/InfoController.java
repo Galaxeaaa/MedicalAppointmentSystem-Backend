@@ -43,6 +43,15 @@ public class InfoController {
         return infoService.addInfo_doc(id, name, title, department, hospital, medicine, introduction, project, registerID, registerSum, score, evaluate, tel, vx, email, registerTime);
     }
 
+    @RequestMapping(value = "/addinfo/setregister", method = RequestMethod.GET)
+    public boolean setregister_doc(
+            @RequestParam(value="id", required = true) String id
+
+    ){
+        System.out.println("doc完善个人信息");
+        return infoService.setregister_doc(id);
+    }
+
     @RequestMapping(value = "/getinfo/usr", method = RequestMethod.GET)
     public List<User> getInfo(@RequestParam(value = "id", required = true) String id) {
         System.out.println("患者个人信息");
@@ -51,17 +60,32 @@ public class InfoController {
     }
     
     @RequestMapping(value = "/getinfo/doctor", method = RequestMethod.GET)
-    public List<Doctor> getInfo_doctor(@RequestParam(value = "id", required = true) String id) {
+    public List<Doctor> getInfo_doctor(@RequestParam(value = "id", required = true) String id,@RequestParam(value = "department", required = true) String department) {
         System.out.println("医生个人信息");
         
-       return infoService.getInfo_doctor(id); 
+       return infoService.getInfo_doctor(id,department);
     }
 
-    @RequestMapping(value = "/getinfo/doctordepartment", method = RequestMethod.GET)
-    public List<Doctor> getInfo_doctor_department(@RequestParam(value = "id", required = true) String id,@RequestParam(value = "department", required = true) String department) {
+    @RequestMapping(value = "/getinfo/doctorall", method = RequestMethod.GET)
+    public List<Doctor> getInfo_doctorall() {
+        System.out.println("所有医生个人信息");
+
+        return infoService.getInfo_doctorall();
+    }
+
+    @RequestMapping(value = "/getinfo/doctorname", method = RequestMethod.GET)
+    public List<Doctor> getInfo_doctorname(@RequestParam(value = "name", required = true) String name) {
         System.out.println("医生个人信息");
 
-        return infoService.getInfo_doctor_department(id,department);
+        return infoService.getInfo_doctorname(name);
     }
 
+
+
+    @RequestMapping(value = "/getinfo/isregister", method = RequestMethod.GET)
+    public int getInfo_isregister(@RequestParam(value = "id", required = true) String id) {
+        System.out.println("医生个人信息");
+
+        return infoService.getInfo_isregister(id);
+    }
 }

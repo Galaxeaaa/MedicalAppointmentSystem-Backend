@@ -70,7 +70,7 @@ public class ChatServiceImpl implements ChatService{
         for(int i=0;i<messageQueue.size();i=i+1){
             Message msg = messageQueue.get(i);
             if(msg.isMatch(id)){
-                if(msg.getType().equals("2")){
+                if(msg.getType().equals("2")||msg.getType().equals("3")){
                     OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
                     try {
                         String fileName = msg.getContent();

@@ -73,7 +73,24 @@ public class InfoDaoImpl implements InfoDao {
         }
     }
 
-    
+    public boolean setregister_doc(String id){
+        String sql="update doctor set registerSum=1 where id='"+id+"'";
+        try{
+            Connection conn = JdbcUtils.getConnection();
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            rs.close();
+            stm.close();
+            conn.close();
+
+            return true;
+        }catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+            return false;
+        }
+    }
 
 
     @Override
@@ -114,10 +131,9 @@ public class InfoDaoImpl implements InfoDao {
     
     
     @Override
-    public List<Doctor> getInfo_doctor(@Param("id") String id){
-        return null;
-    	/*String sql = "select * from doctor where id='"+id+"'";
-        System.out.println(" "+sql);
+    public List<Doctor> getInfo_doctor(@Param("id") String id,@Param("department") String department){
+    	String sql = "select * from doctor where id ='"+id+"'";
+    		
     	try{
             Connection conn = JdbcUtils.getConnection();
             Statement stm = conn.createStatement();        
@@ -155,15 +171,57 @@ public class InfoDaoImpl implements InfoDao {
             e.printStackTrace();
             System.out.println(e);
             return null;
-        }*/
+        }
+    }
+    
+	@Override
+    public List<Doctor> getInfo_doctorname(@Param("name") String name){
+    	String sql = "select * from doctor where name='"+name+"'";
+        //System.out.println("a");
+    	try{
+            Connection conn = JdbcUtils.getConnection();
+            Statement stm = conn.createStatement();        
+            ResultSet rs = stm.executeQuery(sql);
+            List<Doctor> reports=new ArrayList<Doctor>();
+            
+            while(rs.next()){
+            	Doctor re=new Doctor(
+            			rs.getString("id"),
+            			rs.getString("name"),
+            			rs.getString("title"),
+            			rs.getString("department"),	
+            			rs.getString("hospital"),
+            			rs.getString("medicine"),
+            			rs.getString("introduction"),
+            			rs.getString("project"),
+            			rs.getString("registerID"),
+            			rs.getInt("registerSum"),
+            			rs.getInt("score"),
+            			rs.getString("evaluate"),
+            			rs.getString("email"),
+            			rs.getString("tel"),
+            			rs.getString("vx"),
+                        rs.getDate("registerTime")
+    			
+            			);
+            	reports.add(re);
+            }
+            rs.close();
+            stm.close();
+            conn.close();
+            
+            return reports;
+        }catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+            return null;
+        }
     }
 
     @Override
-    public List<Doctor> getInfo_doctor_department(@Param("id") String id,@Param("department") String department){
-        String sql = "select * from doctor where department='"+department+"'"+"and id='"+id+"'";
-        if(id==null)
-            sql = "select * from doctor where department='"+department+"'";
-        System.out.println(sql);
+    public int getInfo_isregister(@Param("id") String id){
+        String sql = "select registerSum from doctor where id='"+id+"'";
+        //System.out.println("a");
         try{
             Connection conn = JdbcUtils.getConnection();
             Statement stm = conn.createStatement();
@@ -196,12 +254,17 @@ public class InfoDaoImpl implements InfoDao {
             stm.close();
             conn.close();
 
-            return reports;
+            return rs.getInt("registerSum");
         }catch (Exception e) {
             e.printStackTrace();
             System.out.println(e);
-            return null;
+            return 0;
         }
+    }
+
+    @Override
+    public List<Doctor> getInfo_doctorall(){
+        return null;
     }
 
 }
