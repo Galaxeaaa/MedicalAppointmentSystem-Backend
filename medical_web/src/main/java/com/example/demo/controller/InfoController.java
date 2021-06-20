@@ -3,6 +3,7 @@ import  java.sql.Date;
 import com.example.demo.*;
 import com.example.demo.service.*;
 
+import java.text.DateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,10 +61,10 @@ public class InfoController {
     }
     
     @RequestMapping(value = "/getinfo/doctor", method = RequestMethod.GET)
-    public List<Doctor> getInfo_doctor(@RequestParam(value = "name", required = true) String name,@RequestParam(value = "department", required = true) String department) {
+    public List<Doctor> getInfo_doctor(@RequestParam(value = "name", required = true) String name,@RequestParam(value = "department", required = true) String department,@RequestParam(value = "registerTime", required = true) String registerTime) {
         System.out.println("医生个人信息");
         
-       return infoService.getInfo_doctor(name,department);
+       return infoService.getInfo_doctor(name,department,registerTime);
     }
 
     @RequestMapping(value = "/getinfo/doctorall", method = RequestMethod.GET)
