@@ -60,10 +60,10 @@ public class InfoController {
     }
     
     @RequestMapping(value = "/getinfo/doctor", method = RequestMethod.GET)
-    public List<Doctor> getInfo_doctor(@RequestParam(value = "id", required = true) String id,@RequestParam(value = "department", required = true) String department) {
+    public List<Doctor> getInfo_doctor(@RequestParam(value = "name", required = true) String name,@RequestParam(value = "department", required = true) String department) {
         System.out.println("医生个人信息");
         
-       return infoService.getInfo_doctor(id,department);
+       return infoService.getInfo_doctor(name,department);
     }
 
     @RequestMapping(value = "/getinfo/doctorall", method = RequestMethod.GET)
