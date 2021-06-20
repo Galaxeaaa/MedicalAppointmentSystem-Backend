@@ -11,10 +11,10 @@ import java.util.List;
 
 public interface ChatDao {
 
-    @Select("select id,name,graph,birth_date,gender,tel,address from usr ")
+    @Select("select id, name, graph, birth_date, gender, tel, address from usr where id in (select user from appoint_record where doctor = #{id})")
     List<User> getPatientList(@Param("id") String id);
 
-    @Select("select id, name, title, department, hospital, medicine, introduction, project, registerID, registerSum, score, evaluate, tel, vx, email, registerTime from doctor")
+    @Select("select id, name, title, department, hospital, medicine, introduction, project, registerID, registerSum, score, evaluate, tel, vx, email, registerTime from doctor where id in (select doctor from appoint_record where user = #{id})")
     List<Doctor> getDoctorList(@Param("id") String id);
 
     @Update("insert into message(msgid, src, dest, content, msg_time, type) values (#{msgid},#{src},#{dest},#{content},NOW(),#{type})")

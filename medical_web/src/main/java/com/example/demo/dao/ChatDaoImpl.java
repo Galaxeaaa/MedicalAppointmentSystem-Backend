@@ -1,30 +1,21 @@
 package com.example.demo.dao;
 
-import com.aliyun.oss.ClientException;
-import com.aliyun.oss.OSS;
-import com.aliyun.oss.OSSClientBuilder;
-import com.aliyun.oss.OSSException;
 import com.example.demo.*;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ChatDaoImpl implements ChatDao{
 
-    @Override
-    public List<Doctor> getDoctorList(@Param("id") String id){
-        String sql = "select * from doctor";
+    public List<Doctor> getDoctorList(String id){
+
+        System.out.println("In CatDao getDoctorList");
+
+        String sql = "select * from doctor where id in "
+                + "(select doctor from appoint_record where user = " + id + ")";
 
         try{
             Connection conn = JdbcUtils.getConnection();
@@ -66,7 +57,8 @@ public class ChatDaoImpl implements ChatDao{
     }
 
     public List<User> getPatientList(String id){
-        String sql = "select id,name,graph,birth_date,gender,tel,address from usr ";
+        String sql = "select id, name, graph, birth_date, gender, tel, address from usr where id in "
+                + "(select user from appoint_record where doctor = " + id + ")";
 
         try{
             Connection conn = JdbcUtils.getConnection();
