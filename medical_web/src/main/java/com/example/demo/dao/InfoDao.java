@@ -1,6 +1,7 @@
 package com.example.demo.dao;
 
 import java.sql.Date;
+import java.text.DateFormat;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -26,13 +27,16 @@ public interface InfoDao {
 			"<when test='department!=\"\"'>"+
 			"and d.name=#{department}"+
 			"</when>"+
+			"<when test='registerTime!=\"\"'>"+
+			"and u.registerTime=#{registerTime}"+
+			"</when>"+
 			"<otherwise>"+
 			"</otherwise>"+
 			"</choose>"+
 			"and u.department=d.id and u.hospital=h.id" +
 			"</where>"+
 			"</script>")
-	List<Doctor> getInfo_doctor(@Param("name") String name,@Param("department") String department);
+	List<Doctor> getInfo_doctor(@Param("name") String name,@Param("department") String department,@Param("registerTime") String registerTime);
 
 	@Select("select id, name, title, department, hospital, medicine, introduction, project, registerID, registerSum, score, evaluate, tel, vx, email, registerTime from doctor where name=#{name}")
 	 	List<Doctor> getInfo_doctorname(@Param("name") String name);
