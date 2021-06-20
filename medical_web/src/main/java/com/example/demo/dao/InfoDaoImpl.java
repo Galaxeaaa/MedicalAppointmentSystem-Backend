@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -131,7 +132,7 @@ public class InfoDaoImpl implements InfoDao {
     
     
     @Override
-    public List<Doctor> getInfo_doctor(@Param("name") String name,@Param("department") String department){
+    public List<Doctor> getInfo_doctor(@Param("name") String name,@Param("department") String department,@Param("registerTime") String registerTime){
     	return null;
     }
     
