@@ -49,9 +49,9 @@ public class InfoServiceImpl implements InfoService {
 		  		  
 	  }
 	  
- public List<Doctor> getInfo_doctor(String id, String department) {
+ public List<Doctor> getInfo_doctor(String name, String department) {
 		  
-		  return infoDao.getInfo_doctor(id,department);
+		  return infoDao.getInfo_doctor(name,department);
 		  		  
 	  }
 
