@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -128,137 +129,19 @@ public class InfoDaoImpl implements InfoDao {
             return null;
         }
     }
-    
-    
-    @Override
-    public List<Doctor> getInfo_doctor(@Param("id") String id,@Param("department") String department){
-    	String sql = "select * from doctor where id ='"+id+"'";
-    		
-    	try{
-            Connection conn = JdbcUtils.getConnection();
-            Statement stm = conn.createStatement();        
-            ResultSet rs = stm.executeQuery(sql);
-            List<Doctor> reports=new ArrayList<Doctor>();
-            
-            while(rs.next()){
-            	Doctor re = new Doctor(
-            			rs.getString("id"),
-            			rs.getString("name"),
-            			rs.getString("title"),
-            			rs.getString("department"),	
-            			rs.getString("hospital"),
-            			rs.getString("medicine"),
-            			rs.getString("introduction"),
-            			rs.getString("project"),
-            			rs.getString("registerID"),
-            			rs.getInt("registerSum"),
-            			rs.getInt("scoreAvg"),
-            			rs.getString("evaluate"),
-            			rs.getString("email"),
-            			rs.getString("tel"),
-            			rs.getString("vx"),
-                        rs.getDate("registerTime")
-            			);
-            	reports.add(re);
-            }
-            rs.close();
-            stm.close();
-            conn.close();
-            
-            return reports;
-        }catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e);
-            return null;
-        }
+
+    public List<Doctor> getInfo_doctor(@Param("name") String name,@Param("department") String department,@Param("registerTime") String registerTime){
+    	return null;
     }
     
 	@Override
     public List<Doctor> getInfo_doctorname(@Param("name") String name){
-    	String sql = "select * from doctor where name='"+name+"'";
-        //System.out.println("a");
-    	try{
-            Connection conn = JdbcUtils.getConnection();
-            Statement stm = conn.createStatement();        
-            ResultSet rs = stm.executeQuery(sql);
-            List<Doctor> reports=new ArrayList<Doctor>();
-            
-            while(rs.next()){
-            	Doctor re=new Doctor(
-            			rs.getString("id"),
-            			rs.getString("name"),
-            			rs.getString("title"),
-            			rs.getString("department"),	
-            			rs.getString("hospital"),
-            			rs.getString("medicine"),
-            			rs.getString("introduction"),
-            			rs.getString("project"),
-            			rs.getString("registerID"),
-            			rs.getInt("registerSum"),
-            			rs.getInt("score"),
-            			rs.getString("evaluate"),
-            			rs.getString("email"),
-            			rs.getString("tel"),
-            			rs.getString("vx"),
-                        rs.getDate("registerTime")
-    			
-            			);
-            	reports.add(re);
-            }
-            rs.close();
-            stm.close();
-            conn.close();
-            
-            return reports;
-        }catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e);
-            return null;
-        }
+    	return null;
     }
 
     @Override
     public int getInfo_isregister(@Param("id") String id){
-        String sql = "select registerSum from doctor where id='"+id+"'";
-        //System.out.println("a");
-        try{
-            Connection conn = JdbcUtils.getConnection();
-            Statement stm = conn.createStatement();
-            ResultSet rs = stm.executeQuery(sql);
-            List<Doctor> reports=new ArrayList<Doctor>();
-
-            while(rs.next()){
-                Doctor re=new Doctor(
-                        rs.getString("id"),
-                        rs.getString("name"),
-                        rs.getString("title"),
-                        rs.getString("department"),
-                        rs.getString("hospital"),
-                        rs.getString("medicine"),
-                        rs.getString("introduction"),
-                        rs.getString("project"),
-                        rs.getString("registerID"),
-                        rs.getInt("registerSum"),
-                        rs.getInt("score"),
-                        rs.getString("evaluate"),
-                        rs.getString("email"),
-                        rs.getString("tel"),
-                        rs.getString("vx"),
-                        rs.getDate("registerTime")
-
-                );
-                reports.add(re);
-            }
-            rs.close();
-            stm.close();
-            conn.close();
-
-            return rs.getInt("registerSum");
-        }catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e);
-            return 0;
-        }
+        return 0;
     }
 
     @Override

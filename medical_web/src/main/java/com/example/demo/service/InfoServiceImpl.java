@@ -4,6 +4,7 @@ import com.example.demo.*;
 import com.example.demo.dao.*;
 
 import java.sql.Date;
+import java.text.DateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,9 +50,9 @@ public class InfoServiceImpl implements InfoService {
 		  		  
 	  }
 	  
- public List<Doctor> getInfo_doctor(String id, String department) {
+ public List<Doctor> getInfo_doctor(String name, String department, String registerTime) {
 		  
-		  return infoDao.getInfo_doctor(id,department);
+		  return infoDao.getInfo_doctor(name,department,registerTime);
 		  		  
 	  }
 

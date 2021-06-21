@@ -13,29 +13,29 @@ public interface InfoDao {
 	 @Select("select id,name,graph,birth_date,gender,tel,address from usr where id=#{id}")
 	    List<User>getInfo(@Param("id") String id);
 
-	@Select("select id, name, title, department, hospital, medicine, introduction, project, registerID, registerSum, scoreAvg, evaluate, tel, vx, email, registerTime from doctor")
+	@Select("SELECT u.id id,u.name name,u.title title,d.name department ,h.name hospital,u.medicine medicine,u.introduction introduction,u.project project,u.registerID registerID,u.registerSum registerSum, u.score score, u.evaluate evaluate, u.tel tel, u.vx vx, u.email email, u.registerTime registerTime from doctor u, department d, hospital h WHERE u.department=d.id and u.hospital=h.id")
 	List<Doctor> getInfo_doctorall();
 
-	 @Select("<script>"+
-			 "select id, name, title, department, hospital, medicine, introduction, project, registerID, registerSum, scoreAvg, evaluate, tel, vx, email, registerTime from doctor " +
-			 "<where>" +
-			 "<choose>"+
-			 "<when test='id==\"\" and department==\"\"'>"+
-			 "id is not null"+
-			 "</when>"+
-			 "<when test='id==\"\" and department!=\"\"'>"+
-			 "department=#{department}"+
-			 "</when>"+
-			 "<when test='id!=\"\" and department==\"\"'>"+
-			 "id=#{id}"+
-			 "</when>"+
-			 "<otherwise>"+
-			 "id=#{id}, department=#{department}"+
-			 "</otherwise>"+
-			 "</choose>"+
-			 "</where>"+
-			 "</script>")
-	    List<Doctor> getInfo_doctor(@Param("id") String id,@Param("department") String department);
+	@Select("<script>"+
+			"SELECT u.id id,u.name name,u.title title,d.name department ,h.name hospital,u.medicine medicine,u.introduction introduction,u.project project,u.registerID registerID,u.registerSum registerSum, u.score score, u.evaluate evaluate, u.tel tel, u.vx vx, u.email email, u.registerTime registerTime from doctor u, department d, hospital h " +
+			"<where>" +
+			"<choose>"+
+			"<when test='name!=\"\"'>"+
+			"and u.name=#{name}"+
+			"</when>"+
+			"<when test='department!=\"\"'>"+
+			"and d.name=#{department}"+
+			"</when>"+
+			"<when test='registerTime!=\"\"'>"+
+			"and u.registerTime=#{registerTime}"+
+			"</when>"+
+			"<otherwise>"+
+			"</otherwise>"+
+			"</choose>"+
+			"and u.department=d.id and u.hospital=h.id" +
+			"</where>"+
+			"</script>")
+	List<Doctor> getInfo_doctor(@Param("name") String name,@Param("department") String department,@Param("registerTime") String registerTime);
 
 	@Select("select id, name, title, department, hospital, medicine, introduction, project, registerID, registerSum, score, evaluate, tel, vx, email, registerTime from doctor where name=#{name}")
 	 	List<Doctor> getInfo_doctorname(@Param("name") String name);
@@ -47,7 +47,7 @@ public interface InfoDao {
 	 @Update("update usr set name=#{name},graph=#{graph},birth_date=#{birth_date},gender=#{gender},tel=#{tel},address=#{address} where id=#{id}")
 	 boolean addInfo_usr(String id,String name,String graph,String birth_date,String gender,String tel,String address);
 
-	@Update("update doctor set registerSum=1 where id=#{id}")
+	@Update("update doctor set registerSum=registerSum+1 where id=#{id}")
 	boolean setregister_doc(String id);
 
 	@Update("update doctor set name=#{name},title=#{title}, department=#{department}, hospital=#{hospital}, medicine=#{medicine}, introduction=#{introduction} where id=#{id}")
