@@ -11,14 +11,17 @@ import java.sql.Statement;
 public class ScoreDaoImpl implements ScoreDao {
 
     public boolean setScore(String did, String score) {
-        String sql = "update doctor set score = score + " + score + ", scoreNum = scoreNum + 1 where id = " + did;
+        String sql = "update doctor set score = score + " + score + ", scoreNum = scoreNum + 1, scoreAvg = score / scoreNum where id = " + did;
         try {
             Connection conn = JdbcUtils.getConnection();
             Statement stm = conn.createStatement();
-            ResultSet rs = stm.executeQuery(sql);
-
-            rs.close();
+            stm.executeQuery(sql);
             stm.close();
+
+//            Statement stm2 = conn.createStatement();
+//            stm2.executeQuery(sql2);
+//            stm2.close();
+
             conn.close();
             return true;
         } catch (Exception e) {

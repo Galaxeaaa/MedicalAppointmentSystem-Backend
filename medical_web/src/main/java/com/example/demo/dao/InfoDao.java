@@ -13,11 +13,11 @@ public interface InfoDao {
 	 @Select("select id,name,graph,birth_date,gender,tel,address from usr where id=#{id}")
 	    List<User>getInfo(@Param("id") String id);
 
-	@Select("select id, name, title, department, hospital, medicine, introduction, project, registerID, registerSum, score, evaluate, tel, vx, email, registerTime from doctor")
+	@Select("select id, name, title, department, hospital, medicine, introduction, project, registerID, registerSum, scoreAvg, evaluate, tel, vx, email, registerTime from doctor")
 	List<Doctor> getInfo_doctorall();
 
 	 @Select("<script>"+
-			 "select id, name, title, department, hospital, medicine, introduction, project, registerID, registerSum, score, evaluate, tel, vx, email, registerTime from doctor " +
+			 "select id, name, title, department, hospital, medicine, introduction, project, registerID, registerSum, scoreAvg, evaluate, tel, vx, email, registerTime from doctor " +
 			 "<where>" +
 			 "<choose>"+
 			 "<when test='id==\"\" and department==\"\"'>"+

@@ -141,7 +141,7 @@ public class InfoDaoImpl implements InfoDao {
             List<Doctor> reports=new ArrayList<Doctor>();
             
             while(rs.next()){
-            	Doctor re=new Doctor(
+            	Doctor re = new Doctor(
             			rs.getString("id"),
             			rs.getString("name"),
             			rs.getString("title"),
@@ -152,13 +152,12 @@ public class InfoDaoImpl implements InfoDao {
             			rs.getString("project"),
             			rs.getString("registerID"),
             			rs.getInt("registerSum"),
-            			rs.getInt("score"),
+            			rs.getInt("scoreAvg"),
             			rs.getString("evaluate"),
             			rs.getString("email"),
             			rs.getString("tel"),
             			rs.getString("vx"),
                         rs.getDate("registerTime")
-    			
             			);
             	reports.add(re);
             }

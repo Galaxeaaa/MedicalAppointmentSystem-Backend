@@ -105,7 +105,7 @@ public class ChatServiceImpl implements ChatService{
         for (int i=0;i<ret.size();i=i+1){
             Message msg = ret.get(i);
             System.out.println("initType: "+msg.getType());
-            if(msg.getType().equals("2") || msg.getType().equals("3")){
+            if(msg.getType().equals("2") || msg.getType().equals("3") || msg.getType().equals("4")){
                 OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
                 try {
                     String fileName = msg.getContent();
