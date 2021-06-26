@@ -33,7 +33,7 @@ public class Doctor {
 		this.project=project;
 		this.registerID=registerID;
 		this.registerSum=registerSum;
-		this.score=score;
+		this.score=scoreAvg;
 		this.evaluate=evaluate;
 		this.tel=tel;
 		this.vx=vx;
