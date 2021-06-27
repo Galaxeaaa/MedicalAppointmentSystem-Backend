@@ -13,11 +13,11 @@ public interface InfoDao {
 	 @Select("select id,name,graph,birth_date,gender,tel,address from usr where id=#{id}")
 	    List<User>getInfo(@Param("id") String id);
 
-	@Select("SELECT u.id id,u.name name,u.title title,d.name department ,h.name hospital,u.medicine medicine,u.introduction introduction,u.project project,u.registerID registerID,u.registerSum registerSum, u.score score, u.evaluate evaluate, u.tel tel, u.vx vx, u.email email, u.registerTime registerTime from doctor u, department d, hospital h WHERE u.department=d.id and u.hospital=h.id")
+	@Select("SELECT u.id id,u.name name,u.title title,d.name department ,h.name hospital,u.medicine medicine,u.introduction introduction,u.project project,u.registerID registerID,u.registerSum registerSum, u.scoreAvg score, u.evaluate evaluate, u.tel tel, u.vx vx, u.email email, u.registerTime registerTime from doctor u, department d, hospital h WHERE u.department=d.id and u.hospital=h.id")
 	List<Doctor> getInfo_doctorall();
 
 	@Select("<script>"+
-			"SELECT u.id id,u.name name,u.title title,d.name department ,h.name hospital,u.medicine medicine,u.introduction introduction,u.project project,u.registerID registerID,u.registerSum registerSum, u.score score, u.evaluate evaluate, u.tel tel, u.vx vx, u.email email, u.registerTime registerTime from doctor u, department d, hospital h " +
+			"SELECT u.id id,u.name name,u.title title,d.name department ,h.name hospital,u.medicine medicine,u.introduction introduction,u.project project,u.registerID registerID,u.registerSum registerSum, u.scoreAvg score, u.evaluate evaluate, u.tel tel, u.vx vx, u.email email, u.registerTime registerTime from doctor u, department d, hospital h " +
 			"<where>" +
 			"<choose>"+
 			"<when test='name!=\"\"'>"+
@@ -37,7 +37,7 @@ public interface InfoDao {
 			"</script>")
 	List<Doctor> getInfo_doctor(@Param("name") String name,@Param("department") String department,@Param("registerTime") String registerTime);
 
-	@Select("select id, name, title, department, hospital, medicine, introduction, project, registerID, registerSum, score, evaluate, tel, vx, email, registerTime from doctor where name=#{name}")
+	@Select("select id, name, title, department, hospital, medicine, introduction, project, registerID, registerSum, scoreAvg, evaluate, tel, vx, email, registerTime from doctor where name=#{name}")
 	 	List<Doctor> getInfo_doctorname(@Param("name") String name);
 
 
