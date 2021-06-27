@@ -29,13 +29,16 @@ public interface InfoDao {
 			"<when test='registerTime!=\"\"'>"+
 			"and u.registerTime=#{registerTime}"+
 			"</when>"+
+			"<when test='hospital!=\"\"'>"+
+			"and h.name=#{hospital}"+
+			"</when>"+
 			"<otherwise>"+
 			"</otherwise>"+
 			"</choose>"+
 			"and u.department=d.id and u.hospital=h.id" +
 			"</where>"+
 			"</script>")
-	List<Doctor> getInfo_doctor(@Param("name") String name,@Param("department") String department,@Param("registerTime") String registerTime);
+	List<Doctor> getInfo_doctor(@Param("name") String name,@Param("department") String department,@Param("registerTime") String registerTime,@Param("hospital") String hospital);
 
 	@Select("select id, name, title, department, hospital, medicine, introduction, project, registerID, registerSum, score, evaluate, tel, vx, email, registerTime from doctor where name=#{name}")
 	 	List<Doctor> getInfo_doctorname(@Param("name") String name);
