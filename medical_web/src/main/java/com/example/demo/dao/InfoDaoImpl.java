@@ -130,7 +130,8 @@ public class InfoDaoImpl implements InfoDao {
         }
     }
 
-    public List<Doctor> getInfo_doctor(@Param("name") String name,@Param("department") String department,@Param("registerTime") String registerTime){
+    @Override
+    public List<Doctor> getInfo_doctor(@Param("name") String name,@Param("department") String department,@Param("registerTime") String registerTime,@Param("hospital") String hospital){
     	return null;
     }
     
