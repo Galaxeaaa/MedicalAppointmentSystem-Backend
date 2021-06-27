@@ -8,7 +8,7 @@ import com.example.demo.*;
 
 public interface InfoService {
 	 List<User> getInfo(String userName);
-	 List<Doctor> getInfo_doctor(String name, String department, String registerTime);
+	 List<Doctor> getInfo_doctor(String name, String department, String registerTime,String hospital);
 	List<Doctor> getInfo_doctorall();
 	List<Doctor> getInfo_doctorname(String userName);
 
