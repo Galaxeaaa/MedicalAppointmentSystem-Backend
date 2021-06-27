@@ -50,11 +50,11 @@ public class InfoServiceImpl implements InfoService {
 		  		  
 	  }
 	  
- public List<Doctor> getInfo_doctor(String name, String department, String registerTime) {
+	public List<Doctor> getInfo_doctor(String name, String department, String registerTime, String hospital) {
 		  
-		  return infoDao.getInfo_doctor(name,department,registerTime);
+		return infoDao.getInfo_doctor(name,department,registerTime,hospital);
 		  		  
-	  }
+	 }
 
 	public List<Doctor> getInfo_doctorall() {
 
