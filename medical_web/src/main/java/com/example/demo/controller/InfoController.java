@@ -61,10 +61,10 @@ public class InfoController {
     }
     
     @RequestMapping(value = "/getinfo/doctor", method = RequestMethod.GET)
-    public List<Doctor> getInfo_doctor(@RequestParam(value = "name", required = true) String name,@RequestParam(value = "department", required = true) String department,@RequestParam(value = "registerTime", required = true) String registerTime) {
+    public List<Doctor> getInfo_doctor(@RequestParam(value = "name", required = true) String name,@RequestParam(value = "department", required = true) String department,@RequestParam(value = "registerTime", required = true) String registerTime,@RequestParam(value = "hospital", required = true) String hospital) {
         System.out.println("医生个人信息");
         
-       return infoService.getInfo_doctor(name,department,registerTime);
+       return infoService.getInfo_doctor(name,department,registerTime,hospital);
     }
 
     @RequestMapping(value = "/getinfo/doctorall", method = RequestMethod.GET)
